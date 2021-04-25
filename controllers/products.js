@@ -1,4 +1,34 @@
-let products = [];
+let products = [    {   
+"id": 1,
+"title": "Despertador",
+"price": 79.99,
+"thumbnail": "https://cdn4.iconfinder.com/data/icons/back-to-school-151/64/clock-morning-alarm-time-timer-128.png"
+},
+
+{
+"id": 2,
+"title": "Gato",
+"price": 46.19,
+"thumbnail": "https://cdn3.iconfinder.com/data/icons/animals-105/150/icon_animal_gato-128.png"
+},
+
+{
+"id": 3,
+"title": "Anillo",
+"price": 21.37,
+"thumbnail": "https://cdn0.iconfinder.com/data/icons/love-story-filled-outline-1/512/engagement_love_romantic_romance_wedding_ring-128.png"
+},
+
+{
+  "id": 3,
+  "title": "Paleta",
+  "price": 21.37,
+  "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/paint-color-pallete-brush-academy-128.png"
+  },
+  
+
+
+];
 
 export default class productController{
   constructor() {
