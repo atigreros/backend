@@ -1,0 +1,24 @@
+extends layout 
+
+
+block body
+  h3 Vista de Productos
+
+  if products
+    table(class='table table-primary')
+      thead
+        tr
+          th(scope='col') #
+          th(scope='col') Title
+          th(scope='col') Price
+          th(scope='col') Thumbnail
+      tbody
+          tr
+            td=products.id
+            td=products.title
+            td=products.price
+            td
+              img(src=products.thumbnail)
+
+  else
+    div(class='alert alert-primary', role='alert') El producto no existe

@@ -20,7 +20,7 @@ let products = [    {
 },
 
 {
-  "id": 3,
+  "id": 4,
   "title": "Paleta",
   "price": 21.37,
   "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/paint-color-pallete-brush-academy-128.png"
