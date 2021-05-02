@@ -1,0 +1,33 @@
+<%- include('./layout') -%>
+<body>
+<h3>Vista de Producto</h3>
+<% if (products) { %>
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><%= products.id%></td>
+          <td><%= products.title%></td>
+          <td><%= products.price%></td>
+          <td><img src="<%= products.thumbnail%>"></td>
+        </tr>
+    </tbody>
+  </table>
+
+  <% } else { %>
+
+  <div class="alert alert-primary" role="alert">
+    <h5>No existe el producto</h5>
+  </div>
+
+  <% } %>
+
+</body>
+</html>

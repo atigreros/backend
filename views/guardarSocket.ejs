@@ -1,0 +1,64 @@
+<%- include('./layout') -%>
+<body>
+    <h3>Ingrese producto</h3>
+
+    <!-- <form action="/guardarSocket"> -->
+        <div class="form-group row">
+            <label for="title" class="col-sm-1 col-form-label">Nombre</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm" rows="3" type="text" id="title" name="title" /></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="price" class="col-sm-1 col-form-label">Precio</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm " rows="3" type="text" id="price" name="price" /></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="thumbnail" class="col-sm-1 col-form-label">Foto</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm" rows="3" type="text" id="thumbnail" name="thumbnail" /></p>
+            </div>
+        </div>
+        <button class="btn btn-primary mb-4" id="miBoton">ADICIONAR</button>
+    <!-- </form> -->
+
+    <% if (products) { %>
+        <table class="table table-primary" Id='ProductTable'>
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Thumbnail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach(product=> { %>
+              <tr>
+                <td>
+                  <a href="/listar/<%= product.id%>" class="text-white"><%= product.id%></a> 
+                  
+                </td>
+                <td>
+                  <a href="/listar/<%= product.id%>" class="text-white"><%= product.title%></a>
+                </td>
+                <td>
+                  <%= product.price%>
+                </td>
+                <td><img src="<%= product.thumbnail%>"></td>
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+          <div class="alert alert-primary" role="alert">
+            No hay productos disponibles
+          </div>
+        <% } %>
+
+</body>
+    <script src="js/main.js"></script>
+</html>
+
