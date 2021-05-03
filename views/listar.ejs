@@ -1,0 +1,38 @@
+<%- include('./layout') -%>
+<body>
+<% if (products) { %>
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(product=> { %>
+        <tr>
+          <td>
+            <a href="/listar/<%= product.id%>" class="text-white"><%= product.id%></a> 
+            
+          </td>
+          <td>
+            <a href="/listar/<%= product.id%>" class="text-white"><%= product.title%></a>
+          </td>
+          <td>
+            <%= product.price%>
+          </td>
+          <td><img src="<%= product.thumbnail%>"></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  <% } else { %>
+    <div class="alert alert-primary" role="alert">
+      No hay productos disponibles
+    </div>
+  <% } %>
+
+</body>
+</html>

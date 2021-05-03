@@ -1,0 +1,30 @@
+<%- include('./layout') -%>
+<body>
+    <h3>Ingrese producto</h3>
+
+    <form action="/guardar" method="post">
+        <div class="form-group row">
+            <label for="title" class="col-sm-1 col-form-label">Nombre</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm" rows="3" type="text" name="title" /></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="price" class="col-sm-1 col-form-label">Precio</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm " rows="3" type="text" name="price" /></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="thumbnail" class="col-sm-1 col-form-label">Foto</label>
+            <div class="col-sm-2">
+                <input class="form-control form-control-sm" rows="3" type="text" name="thumbnail" /></p>
+            </div>
+        </div>
+        <button class="btn btn-primary mb-4">ADICIONAR</button>
+    </form>
+    
+
+</body>
+</html>
+
