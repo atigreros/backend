@@ -1,4 +1,32 @@
-let products = [];
+let products = [
+  {
+    "id": 1,
+    "title": "sombrero voltiao",
+    "price": 79.99,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/91XPsfS64ML._AC_SL1500_.jpg"
+  },
+
+  {
+    "id": 2,
+    "title": "mochila wayuu",
+    "price": 46.19,
+    "thumbnail": "https://www.wayuubags.co/images/Mochilas%20Wayuu%20Bolsos%2019.jpg"
+  },
+
+  {
+    "id": 3,
+    "title": "gato Botero",
+    "price": 1378.37,
+    "thumbnail": "https://sc04.alicdn.com/kf/Hb45adfe1ee0c41d68f614f80f7fe9e5bw.jpg"
+  },
+
+  {
+    "id": 4,
+    "title": "Precolombino Replica",
+    "price": 51.37,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_748587-MCO41994479660_052020-F.webp"
+  }
+];
 
 export default class productController{
   constructor() {

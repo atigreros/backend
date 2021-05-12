@@ -1,7 +1,7 @@
 import express from 'express'
-import Products from '../controllers/products.js'
+import Carrito from '../controllers/carrito.js'
 
-const products = new Products();
+const carrito = new Carrito();
 
 /*to test
     {   "title": "sombrero voltiao",
@@ -31,38 +31,41 @@ const products = new Products();
 //routerProducts.use(express.json())
 //routerProducts.use(express.urlencoded({extended:true}))
 
-function createProductsRouter() {
-    const routerProducts = express.Router()
-    routerProducts.use(express.json())
-    routerProducts.use(express.urlencoded({extended: true}));
+function createCarritoRouter() {
+    const routerCarrito = express.Router()
+    routerCarrito.use(express.json())
+    routerCarrito.use(express.urlencoded({extended: true}));
   
-    routerProducts.get("/", (req, res) => {
-        const prod = products.get()
+    routerCarrito.get("/", (req, res) => {
+        const prod = carrito.get()
         if (prod)
             return res.json(prod);
 
         res.status(404).json({
-            error: "no hay productos cargados",});
+            error: "no hay productos en el carrito",});
     });
 
 
-    routerProducts.get("/:id", (req, res) => {
+    routerCarrito.get("/:id", (req, res) => {
         const { id } = req.params;
-        const prod = products.getById(id);
+        const prod = carrito.getById(id);
         if (prod)
             return res.json(prod);
 
         res.status(404).json({
-        error: "producto no encontrado",
+        error: "producto no encontrado en el carrito",
         });
     });
 
-    routerProducts.post("/guardar", (req, res) => {
+    routerCarrito.post("/:id", (req, res) => {
         console.log(req.body);
-        const prod = products.add(req.body);
+        const { id } = req.params;
+        let product = req.body;
+        product.id = parseInt(id);
+        const prod = carrito.add(product);
 
         if (prod){
-           return res.redirect("/api/productos");
+           return res.redirect("/carrito");
            res.status(201).json(prod); 
         }
             
@@ -72,30 +75,30 @@ function createProductsRouter() {
             });
     })
 
-    routerProducts.delete("/borrar/:id", (req, res)=>{
+    routerCarrito.delete("/:id", (req, res)=>{
         const { id } = req.params;
-        const prod = products.remove(id);
+        const prod = carrito.remove(id);
 
         if (prod)
         return res.status(201).json(prod);
 
         res.status(404).json({
-        error: "producto no valido",
+        error: "producto no válido",
         });
     })
 
-    routerProducts.put("/:id", (req, res)=>{
+    routerCarrito.put("/:id", (req, res)=>{
         const { id } = req.params;
         console.log(id);
         const prod = req.body;
         console.log( prod);
-        if (products.update(id, prod))
-            return res.status(201).json(products);
+        if (carrito.update(id, prod))
+            return res.status(201).json(carrito);
 
         res.status(404).send();
     })
 
-    return routerProducts;
+    return routerCarrito;
 }
 
-export { createProductsRouter }
+export { createCarritoRouter }
