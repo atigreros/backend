@@ -20,11 +20,12 @@ class MessageDB {
   add(message) {
     message.date = getDate();
     console.log(message);
-    return this.knex('messages').insert([
+    return this.knex('messages').insert(message);
+    /*([
       { email: message.email },
       { text: message.text },
       { date: message.date }
-    ])
+    ])*/
   }
 
   select() {
