@@ -3,8 +3,14 @@ import { createProductsRouter } from '../routers/productsRouter.js'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
+//import File from '../controllers/FileSystem.js'; //persistence with fileSystem
+import MessageDB from '../controllers/messageDb.js'
+import { sqlite3 as configSqlite3 } from '../controllers/config.js'
+
 
 const products = new Products();
+const messageDB = new MessageDB(configSqlite3);
+//const file = new File('./../chat.txt');
 
 //constans definitions
 const PORT = 8080;
@@ -35,6 +41,17 @@ io.on('connection', socket => {
   console.log('Nuevo cliente conectado!')
   socket.emit('messages', messages)
 
+  //message Data Base
+  try {
+    messageDB.create();
+    //let watch = messageDB.select();
+    //console.log(watch);
+  } catch (err) {
+    console.log(err)
+  } finally {
+    //messageDB.close()
+  }
+
   //When click insert from user
   socket.on('boton', newProduct => {
     console.log('Click del usuario');
@@ -45,7 +62,17 @@ io.on('connection', socket => {
 
   //When chat send message
   socket.on('messages', data => {
-    messages.push(data)
+    messages.push(data);
+    try {
+      messageDB.add(data);
+      let watch = messageDB.select();
+      console.log(watch);
+    } catch (err) {
+      console.log(err)
+    } finally {
+      //messageDB.close()
+    }
+    //file.guardar(data); //persistence with filesystem
     io.sockets.emit('messages', messages)
   })
 
