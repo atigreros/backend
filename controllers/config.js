@@ -2,14 +2,14 @@ const mysql = {
   client: 'mysql',
   connection: {
     host: 'localhost',
-    user: 'coderhouse',
-    password: 'coderhouse',
+    user: '',
+    password: '',
     database: 'project'
   }
 }
 const sqlite3 = {
   client: 'sqlite3',
-  connection: { filename: '../db.sqlite3' },
+  connection: { filename: './db.sqlite3' },
   useNullAsDefault: true
 }
 

@@ -1,48 +1,31 @@
-import knex from 'knex'
+import { sqlite3 } from './config.js'
+import knexLib from 'knex'
 
 class MessageDB {
-  constructor(config) {
-    this.knex = knex(config)
-  }
+    constructor() {
+        this.knex = knexLib(sqlite3);
+        (async() => {
+            let exists = await this.knex.schema.hasTable('messages')
+            if (!exists) {
+                await this.knex.schema.createTable('messages', table => {
+                    table.increments('id').primary();
+                    table.string('email', 60);
+                    table.string('text', 100);
+                    table.string('date',50);
+                });
+                console.log('table messages was created!')
+            }
+        })()
+    }
 
-  async create() {
-    return this.knex.schema.dropTableIfExists('messages')
-      .then(() => {
-        return this.knex.schema.createTable('messages', table => {
-          table.increments('id').primary();
-          table.string('email', 64).notNullable();
-          table.string('text', 128).notNullable();
-          table.string('date', 15).notNullable();
-        })
-      })
-  }
-
-  add(message) {
-    message.date = getDate();
-    console.log(message);
-    return this.knex('messages').insert(message);
-    /*([
-      { email: message.email },
-      { text: message.text },
-      { date: message.date }
-    ])*/
-  }
-
-  select() {
-    return this.knex('messages').select()
-  }
-
-  delete(id) {
-    return this.knex.from('messages').where('id', id).del()
-  }
-
-  update(id, newMessage) {
-    return this.knex.from('messages').where('id', id).update({ text: newMessage })
-  }
-
-  close() {
-    return this.knex.destroy()
-  }
+    read() {
+        return this.knex('messages').select('*')
+    }
+    
+    add(message) {
+        message.date = getDate();
+        return this.knex('messages').insert(message) 
+    }
 }
 
 //return current Date

@@ -6,10 +6,13 @@ import Products from '../controllers/products.js'
 //import File from '../controllers/FileSystem.js'; //persistence with fileSystem
 import MessageDB from '../controllers/messageDb.js'
 import { sqlite3 as configSqlite3 } from '../controllers/config.js'
+import ProductsDB from '../controllers/productsDb.js'
+import { mysql as configMysql } from '../controllers/config.js'
 
 
-const products = new Products();
-const messageDB = new MessageDB(configSqlite3);
+let products = new Products();
+let messageDB = new MessageDB(configSqlite3);
+let productsDB = new ProductsDB(configMysql);
 //const file = new File('./../chat.txt');
 
 //constans definitions
@@ -41,38 +44,30 @@ io.on('connection', socket => {
   console.log('Nuevo cliente conectado!')
   socket.emit('messages', messages)
 
-  //message Data Base
-  try {
-    messageDB.create();
-    //let watch = messageDB.select();
-    //console.log(watch);
-  } catch (err) {
-    console.log(err)
-  } finally {
-    //messageDB.close()
-  }
 
   //When click insert from user
-  socket.on('boton', newProduct => {
+  socket.on('boton', async function(newProduct) { 
     console.log('Click del usuario');
     const prod = products.add(newProduct);
     console.log(newProduct);
+
+    console.log(newProduct)
+    await productsDB.add(newProduct); 
+    let valid =  await productsDB.read();
+    console.log(valid);
+
     io.sockets.emit('productsToClient', newProduct);
   })
 
   //When chat send message
-  socket.on('messages', data => {
+  socket.on('messages', async function(data) { 
     messages.push(data);
-    try {
-      messageDB.add(data);
-      let watch = messageDB.select();
-      console.log(watch);
-    } catch (err) {
-      console.log(err)
-    } finally {
-      //messageDB.close()
-    }
-    //file.guardar(data); //persistence with filesystem
+   
+    console.log(data)
+    await messageDB.add(data); 
+    let valid =  await messageDB.read();
+    console.log(valid);
+ 
     io.sockets.emit('messages', messages)
   })
 
