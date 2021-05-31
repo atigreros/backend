@@ -4,15 +4,16 @@ import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 //import File from '../controllers/FileSystem.js'; //persistence with fileSystem
-import MessageDB from '../controllers/messageDb.js'
-import { sqlite3 as configSqlite3 } from '../controllers/config.js'
-import ProductsDB from '../controllers/productsDb.js'
-import { mysql as configMysql } from '../controllers/config.js'
+import MessageDB from '../controllers/messageDB.js'
+// import { sqlite3 as configSqlite3 } from '../controllers/config.js'
+import ProductsDB from '../controllers/productsDB.js'
+//import { mysql as configMysql } from '../controllers/config.js'
 
 
 let products = new Products();
-let messageDB = new MessageDB(configSqlite3);
-let productsDB = new ProductsDB(configMysql);
+// let messageDB = new MessageDB(configSqlite3);
+let messageDB = new MessageDB();
+let productsDB = new ProductsDB();
 //const file = new File('./../chat.txt');
 
 //constans definitions
@@ -51,7 +52,6 @@ io.on('connection', socket => {
     const prod = products.add(newProduct);
     console.log(newProduct);
 
-    console.log(newProduct)
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();
     console.log(valid);
