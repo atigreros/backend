@@ -2,9 +2,9 @@ const mysql = {
   client: 'mysql',
   connection: {
     host: 'localhost',
-    user: '',
-    password: '',
-    database: 'project'
+    user: 'root',
+    password: 'aleja78*',
+    database: 'prueba'
   }
 }
 const sqlite3 = {
