@@ -7,13 +7,44 @@ import Products from '../controllers/products.js'
 import MessageDB from '../controllers/messageDb.js'
 import { sqlite3 as configSqlite3 } from '../controllers/config.js'
 import ProductsDB from '../controllers/productsDb.js'
+import ProductsMongoDB from '../controllers/productsMongoDb.js'
 import { mysql as configMysql } from '../controllers/config.js'
 
 
 let products = new Products();
+let productsDB;
 let messageDB = new MessageDB(configSqlite3);
-let productsDB = new ProductsDB(configMysql);
-//const file = new File('./../chat.txt');
+const persistence = 5;
+
+
+switch(persistence) {
+  case 0: //Memory
+    // code block
+    break;
+  case 1: //FileSystem
+    //productsDB = new File('./../products.txt');
+  break;
+  case 2: //MySQL Local
+    productsDB = new ProductsDB(configMysql);
+  break;
+  case 3: //MySQL DBSaaS
+    // code block
+  break;
+  case 4: 
+    //let productsDB = new ProductsDB(configSqlite3);
+  break;
+  case 5: //Mongo Local
+    productsDB = new ProductsMongoDB();
+  break;
+  case 6: //Mongo DBSaaS
+    // code block
+  break;
+  case 7: //Firebase
+    // code block
+  break;
+  default:
+    // code block
+}
 
 //constans definitions
 const PORT = 8080;
@@ -51,7 +82,6 @@ io.on('connection', socket => {
     const prod = products.add(newProduct);
     console.log(newProduct);
 
-    console.log(newProduct)
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();
     console.log(valid);

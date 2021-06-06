@@ -1,4 +1,5 @@
 import { mysql } from './config.js'
+import { sqlite3 } from './config.js'
 import knexLib from 'knex'
 
 class ProductsDB {
