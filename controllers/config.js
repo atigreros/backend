@@ -3,7 +3,7 @@ const mysql = {
   connection: {
     host: 'localhost',
     user: 'root',
-    password: 'aleja78*',
+    password: 'aleja78*',   
     database: 'prueba'
   }
 }
@@ -13,4 +13,14 @@ const sqlite3 = {
   useNullAsDefault: true
 }
 
-export { mysql, sqlite3 }
+const mongodbLocal = {
+  connectionString : 'mongodb://localhost/ecommerce', 
+  connectionLabel : 'local'
+}
+
+const mongodbRemote = {
+  connectionString : 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority',
+  connectionLabel : 'Atlas'
+}
+
+export { mysql, sqlite3, mongodbLocal, mongodbRemote }

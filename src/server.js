@@ -5,10 +5,14 @@ import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 //import File from '../controllers/FileSystem.js'; //persistence with fileSystem
 import MessageDB from '../controllers/messageDb.js'
-import { sqlite3 as configSqlite3 } from '../controllers/config.js'
 import ProductsDB from '../controllers/productsDb.js'
 import ProductsMongoDB from '../controllers/productsMongoDb.js'
-import { mysql as configMysql } from '../controllers/config.js'
+import { 
+  mongodbRemote as configmongodbRemote, 
+  mongodbLocal as configmongodbLocal,
+  mysql as configMysql,  
+  sqlite3 as configSqlite3 
+} from '../controllers/config.js'
 
 
 let products = new Products();
@@ -34,10 +38,10 @@ switch(persistence) {
     //let productsDB = new ProductsDB(configSqlite3);
   break;
   case 5: //Mongo Local
-    productsDB = new ProductsMongoDB();
+    productsDB = new ProductsMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
   break;
   case 6: //Mongo DBSaaS
-    // code block
+    productsDB = new ProductsMongoDB(configmongodbRemote.connectionString, configmongodbRemote.connectionLabel);
   break;
   case 7: //Firebase
     // code block
