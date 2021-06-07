@@ -5,7 +5,7 @@ import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 //import File from '../controllers/FileSystem.js'; //persistence with fileSystem
 import MessageDB from '../controllers/messageDb.js'
-import ProductsDB from '../controllers/productsDb.js'
+import ProductsDB from '../controllers/productsDB.js'
 import ProductsMongoDB from '../controllers/productsMongoDb.js'
 import { 
   mongodbRemote as configmongodbRemote, 
@@ -13,12 +13,13 @@ import {
   mysql as configMysql,  
   sqlite3 as configSqlite3 
 } from '../controllers/config.js'
+import ProductsFirebase from '../controllers/productsFirebase.js'
 
 
 let products = new Products();
 let productsDB;
 let messageDB = new MessageDB(configSqlite3);
-const persistence = 5;
+const persistence = 7;
 
 
 switch(persistence) {
@@ -44,7 +45,7 @@ switch(persistence) {
     productsDB = new ProductsMongoDB(configmongodbRemote.connectionString, configmongodbRemote.connectionLabel);
   break;
   case 7: //Firebase
-    // code block
+    productsDB = new ProductsFirebase();
   break;
   default:
     // code block
