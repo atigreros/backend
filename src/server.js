@@ -16,37 +16,37 @@ import {
 import ProductsFirebase from '../controllers/productsFirebase.js'
 
 
-let products = new Products();
 let productsDB;
 let messageDB = new MessageDB(configSqlite3);
-const persistence = 7;
+const persistence = 6;
 
 
 switch(persistence) {
   case 0: //Memory
-    // code block
-    break;
+    productsDB = new Products();
+     break;
   case 1: //FileSystem
     //productsDB = new File('./../products.txt');
-  break;
+    break;
   case 2: //MySQL Local
     productsDB = new ProductsDB(configMysql);
-  break;
+    break;
   case 3: //MySQL DBSaaS
-    // code block
-  break;
+    // En pruebas DBSaaS
+    productsDB = new ProductsDB(configMysql);
+    break;
   case 4: 
-    //let productsDB = new ProductsDB(configSqlite3);
-  break;
+    productsDB = new ProductsDB(configSqlite3);
+    break;
   case 5: //Mongo Local
     productsDB = new ProductsMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
-  break;
+    break;
   case 6: //Mongo DBSaaS
     productsDB = new ProductsMongoDB(configmongodbRemote.connectionString, configmongodbRemote.connectionLabel);
-  break;
+    break;
   case 7: //Firebase
     productsDB = new ProductsFirebase();
-  break;
+    break;
   default:
     // code block
 }
@@ -68,10 +68,11 @@ app.use(express.static('public'));
 app.use('/', createProductsRouter())
 
 
-app.get('/', (req,res) => {
+app.get('/', async (req,res) => {
   //res.render('guardarSocket')
+  const prod = await productsDB.read();
   console.log('Render en el get');
-  const prod = products.get();
+  //const prod = productsDB.read();
   res.render('guardarSocket', {products: prod});
 })
 
@@ -84,8 +85,8 @@ io.on('connection', socket => {
   //When click insert from user
   socket.on('boton', async function(newProduct) { 
     console.log('Click del usuario');
-    const prod = products.add(newProduct);
-    console.log(newProduct);
+    //const prod = products.add(newProduct);
+    //console.log(newProduct);
 
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();

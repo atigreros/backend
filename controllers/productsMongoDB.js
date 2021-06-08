@@ -42,7 +42,7 @@ export default class ProductsDB{
 
           let productSaveModel = await new productsDAO(newProduct);
           let productSave = productSaveModel.save();
-          console.log(productSave);
+          console.log('producto adicionado en Mongo: ' + productSave);
       } catch (err) {
           console.log(`Error en proceso de base de datos - Add: ${err}`)
       } finally {
@@ -56,6 +56,7 @@ export default class ProductsDB{
       console.log("Read Mongoose");
       let products = await productsDAO.find({});
       console.log(products);
+      return products;
   }
 }    
 

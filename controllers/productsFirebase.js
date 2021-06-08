@@ -62,13 +62,15 @@ export default class ProductsFirebase{
             let products = querySnapshot.docs;
     
             const response = products.map((product) => ({
-                id: parseInt(product.id),
+                //id: parseInt(product.id),
+                id: product.id,
                 title : product.data().title,
                 price : parseInt(product.data().price),
                 thumbnail : product.data().thumbnail
-            }));            
+            }));                        
     
             console.log(response);
+            return response;
 
         } catch (error) {
             console.log(error);

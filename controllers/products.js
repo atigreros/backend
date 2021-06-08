@@ -47,7 +47,7 @@ export default class productController{
     return products;
   }
 
-  get() {
+  async read() {
     if (products.length > 0) 
       return products;
     else
