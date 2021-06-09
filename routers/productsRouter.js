@@ -1,5 +1,7 @@
 import express from 'express'
 import Products from '../controllers/products.js'
+import faker from 'faker';
+faker.locale = 'es'
 
 const products = new Products();
 //const socket = io.connect();
@@ -19,6 +21,23 @@ function createProductsRouter() {
         //res.status(404).json({
            // error: "no hay productos cargados",});
     });
+
+    //faker challenger
+    function crearCombinacionAlAzar(id) {
+        return {
+            id,
+            title: faker.commerce.productName(),
+            price: faker.commerce.price(),
+            thumbnail: faker.image.image()
+        }
+    }
+    
+    routerProducts.get('/productos/vista-test', (req, res) => {
+        const cant = Number(req.query.cant) || 10
+        const prod = Array.from(Array(cant), (v, i) => crearCombinacionAlAzar(i + 1));
+        res.render('test', {products: prod})
+    })
+    //end faker challenger
 
     routerProducts.get("/listar/:id", (req, res) => {
         const { id } = req.params;
