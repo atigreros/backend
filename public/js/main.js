@@ -33,6 +33,11 @@ function render(data) {
     const html = data.map((elem, index) => {
       return(`<div>
             <font color="#7AE5E9"> <strong>${elem.email}</strong></font>
+            <font color="#7AE5E9"> <strong>${elem.name}</strong></font>
+            <font color="#7AE5E9"> <strong>${elem.lastName}</strong></font>
+            <font color="#7AE5E9"> <strong>${elem.age}</strong></font>
+            <font color="#7AE5E9"> <strong>${elem.nickName}</strong></font>
+            <font color="#7AE5E9"> <strong>${elem.avatar}</strong></font>
             <font color="#DE6F94"> [${getDate()}]: </font>
             <font color="#94DC91"> <em>${elem.text}</em> </font>`)
     }).join(" ");
@@ -42,8 +47,14 @@ function render(data) {
 function addMessage(e) {
     const mensaje = {
       email: document.getElementById('email').value,
+      name: document.getElementById('name').value,
+      lastName: document.getElementById('lastName').value,
+      age: document.getElementById('age').value,
+      nickName: document.getElementById('nickName').value,
+      avatar: document.getElementById('avatar').value,
       text: document.getElementById('texto').value
     };
+
     socket.emit('messages', mensaje);
 
     document.getElementById('texto').value = ''

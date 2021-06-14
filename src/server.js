@@ -4,21 +4,24 @@ import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 //import File from '../controllers/FileSystem.js'; //persistence with fileSystem
-import MessageDB from '../controllers/messageDb.js'
+//import MessageDB from '../controllers/messageDb.js'
+import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
 import ProductsMongoDB from '../controllers/productsMongoDb.js'
 import { 
   mongodbRemote as configmongodbRemote, 
   mongodbLocal as configmongodbLocal,
   mysql as configMysql,  
-  sqlite3 as configSqlite3 
+  //sqlite3 as configSqlite3 
 } from '../controllers/config.js'
 import ProductsFirebase from '../controllers/productsFirebase.js'
+import {normalize, denormalize, schema } from "normalizr";
+import utils from "util";
 
 
 let productsDB;
-let messageDB = new MessageDB(configSqlite3);
-const persistence = 6;
+let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+const persistence = 5;
 
 
 switch(persistence) {
@@ -102,8 +105,39 @@ io.on('connection', socket => {
     console.log(data)
     await messageDB.add(data); 
     let valid =  await messageDB.read();
-    console.log(valid);
+    //console.log(valid);
  
+    console.log("/* -------------- ORIGINAL ------------- */");
+    console.log(utils.inspect(valid, false, 4, true));
+    console.log("length", JSON.stringify(valid).length);
+    
+    // Define a author schema
+    const authorSchema = new schema.Entity("author", {}, { idAttribute: 'id' });
+    //const authorSchema = new schema.Entity("author");
+    
+    // Define your comments schema
+    const textsSchema = new schema.Entity("text", {author: authorSchema});
+    
+    // Define your article
+    const chatSchema = new schema.Array(textsSchema);
+   // }, {idAttribute:'id'});
+    
+    const normalizedData = normalize(valid, chatSchema);
+    console.log("/* -------------- NORMALIZED ------------- */");
+    console.log(utils.inspect(normalizedData, false, 4, true));
+    console.log("length", JSON.stringify(normalizedData).length);
+
+    // const denormalizedData = denormalize(
+    //   normalizedData.result,
+    //   chatSchema,
+    //   normalizedData.entities
+    // );
+
+    // console.log("/* -------------- DENORMALIZED ------------- */");
+    // console.log(utils.inspect(denormalizedData, false, 4, true));
+    // console.log("length", JSON.stringify(denormalizedData).length);
+
+
     io.sockets.emit('messages', messages)
   })
 
