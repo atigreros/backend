@@ -112,14 +112,17 @@ io.on('connection', socket => {
     console.log("length", JSON.stringify(valid).length);
     
     // Define a author schema
-    const authorSchema = new schema.Entity("author", {}, { idAttribute: 'id' });
-    //const authorSchema = new schema.Entity("author");
+    //const authorSchema = new schema.Entity("author", {}, { idAttribute: 'id' });
+    const authorSchema = new schema.Entity("author");
     
     // Define your comments schema
     const textsSchema = new schema.Entity("text", {author: authorSchema});
     
-    // Define your article
-    const chatSchema = new schema.Array(textsSchema);
+    // Define your chat
+    const chatSchema = new schema.Entity("chat",{
+      author: authorSchema,
+      chat: textsSchema
+    });
    // }, {idAttribute:'id'});
     
     const normalizedData = normalize(valid, chatSchema);
