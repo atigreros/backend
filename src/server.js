@@ -15,13 +15,15 @@ import {
   //sqlite3 as configSqlite3 
 } from '../controllers/config.js'
 import ProductsFirebase from '../controllers/productsFirebase.js'
-import {normalize, denormalize, schema } from "normalizr";
-import utils from "util";
+import session from 'express-session'
+import cookieParser from 'cookie-parser'
+
 
 
 let productsDB;
 let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 const persistence = 5;
+
 
 
 switch(persistence) {
@@ -61,6 +63,21 @@ const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const messages = []
 
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  console.dir(req.cookies)
+  console.dir(req.signedCookies)
+  next()
+})
+
+//session setup
+app.use(session({
+  secret: 'secreto',
+  resave: false,
+  saveUninitialized: false
+}));
+
 //indicates that we will use ejs
 app.set('view engine', 'ejs');
 
@@ -71,13 +88,48 @@ app.use(express.static('public'));
 app.use('/', createProductsRouter())
 
 
-app.get('/', async (req,res) => {
+/*app.get('/', async (req,res) => {
   //res.render('guardarSocket')
   const prod = await productsDB.read();
   console.log('Render en el get');
   //const prod = productsDB.read();
   res.render('guardarSocket', {products: prod});
+})*/
+
+app.get('/', (req, res, next) => {
+  req.session.user = req.body.user;
+  res.cookie('usuario', req.body.user, {maxAge: 30000});
+  res.render('login');
 })
+
+
+app.post('/login', async (req, res) => {
+  console.log(req.body.user);
+  //const user = res.send(req.cookies.usuario);
+  //console.log(user);
+
+  if (req.body.user) {
+      const prod = await productsDB.read();
+      req.session.user = req.body.user;
+      //res.cookie('usuario', req.body.user, {maxAge: 30000});
+      //const user = res.send(req.cookies.usuario);
+      //console.log(user);
+      res.render('guardarSocket', {products: prod, user: req.session.user});
+      //res.render('products');//, {user:req.session.user});
+  } else {
+      res.render('login');
+  }
+})
+
+app.get('/logout', async (req, res) => {
+  if (req.session.user) {
+    res.render('logout', {user: req.session.user});
+    req.session.destroy();  
+  }
+})
+
+
+
 
 //socket connection
 io.on('connection', socket => {
@@ -100,44 +152,14 @@ io.on('connection', socket => {
 
   //When chat send message
   socket.on('messages', async function(data) { 
+
     messages.push(data);
    
     console.log(data)
     await messageDB.add(data); 
     let valid =  await messageDB.read();
-    //console.log(valid);
+    console.log(valid);
  
-    console.log("/* -------------- ORIGINAL ------------- */");
-    console.log(utils.inspect(valid, false, 4, true));
-    console.log("length", JSON.stringify(valid).length);
-    
-    // Define a author schema
-    const authorSchema = new schema.Entity("author", {}, { idAttribute: 'id' });
-    //const authorSchema = new schema.Entity("author");
-    
-    // Define your comments schema
-    const textsSchema = new schema.Entity("text", {author: authorSchema});
-    
-    // Define your article
-    const chatSchema = new schema.Array(textsSchema);
-   // }, {idAttribute:'id'});
-    
-    const normalizedData = normalize(valid, chatSchema);
-    console.log("/* -------------- NORMALIZED ------------- */");
-    console.log(utils.inspect(normalizedData, false, 4, true));
-    console.log("length", JSON.stringify(normalizedData).length);
-
-    // const denormalizedData = denormalize(
-    //   normalizedData.result,
-    //   chatSchema,
-    //   normalizedData.entities
-    // );
-
-    // console.log("/* -------------- DENORMALIZED ------------- */");
-    // console.log(utils.inspect(denormalizedData, false, 4, true));
-    // console.log("length", JSON.stringify(denormalizedData).length);
-
-
     io.sockets.emit('messages', messages)
   })
 

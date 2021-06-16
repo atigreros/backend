@@ -1,0 +1,20 @@
+
+<%- include('./layout') -%>
+<body>
+
+    <div class="form-group row">
+        <div class="col-sm-12">
+          <h3>Hasta luego <%= user %> </h3>
+        </div>
+    </div>
+
+      <script>
+             setTimeout(function(){
+                window.location.href = '/';
+             }, 2000);
+      </script>
+      <p>Será redireccionado después de 2 segundos.</p>
+    
+</body>
+</html>
+
