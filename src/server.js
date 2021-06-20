@@ -17,7 +17,7 @@ import {
 import ProductsFirebase from '../controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
-
+import MongoStore from 'connect-mongo'
 
 
 let productsDB;
@@ -25,7 +25,7 @@ let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmo
 const persistence = 5;
 
 
-
+//**************Select Database**************
 switch(persistence) {
   case 0: //Memory
     productsDB = new Products();
@@ -62,6 +62,7 @@ const app = express();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const messages = []
+const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 
 app.use(cookieParser());
 
@@ -73,9 +74,17 @@ app.use((req, res, next) => {
 
 //session setup
 app.use(session({
+  //**************Redis database*********
+  store: MongoStore.create({mongoUrl: configmongodbRemote.connectionString}),
+  ttl:300,
+  mongoOptions: advacedOptions,
   secret: 'secreto',
   resave: false,
   saveUninitialized: false
+  /*cookie:{
+    maxAge: 30000
+  }*/
+
 }));
 
 //indicates that we will use ejs
@@ -88,13 +97,6 @@ app.use(express.static('public'));
 app.use('/', createProductsRouter())
 
 
-/*app.get('/', async (req,res) => {
-  //res.render('guardarSocket')
-  const prod = await productsDB.read();
-  console.log('Render en el get');
-  //const prod = productsDB.read();
-  res.render('guardarSocket', {products: prod});
-})*/
 
 app.get('/', (req, res, next) => {
   req.session.user = req.body.user;
@@ -111,11 +113,7 @@ app.post('/login', async (req, res) => {
   if (req.body.user) {
       const prod = await productsDB.read();
       req.session.user = req.body.user;
-      //res.cookie('usuario', req.body.user, {maxAge: 30000});
-      //const user = res.send(req.cookies.usuario);
-      //console.log(user);
       res.render('guardarSocket', {products: prod, user: req.session.user});
-      //res.render('products');//, {user:req.session.user});
   } else {
       res.render('login');
   }
