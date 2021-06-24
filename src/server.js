@@ -23,7 +23,7 @@ import MongoStore from 'connect-mongo'
 let productsDB;
 let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 const persistence = 5;
-
+const users = [];
 
 //**************Select Database**************
 switch(persistence) {
@@ -80,10 +80,10 @@ app.use(session({
   mongoOptions: advacedOptions,
   secret: 'secreto',
   resave: false,
-  saveUninitialized: false
-  /*cookie:{
-    maxAge: 30000
-  }*/
+  saveUninitialized: false,
+  cookie:{
+    maxAge: 60000
+  }
 
 }));
 
@@ -97,26 +97,50 @@ app.use(express.static('public'));
 app.use('/', createProductsRouter())
 
 
-
-app.get('/', (req, res, next) => {
+/*app.get('/', (req, res, next) => {
   req.session.user = req.body.user;
   res.cookie('usuario', req.body.user, {maxAge: 30000});
   res.render('login');
+})*/
+
+//REGISTER
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+app.post('/register', (req, res) => {
+  const {name, pwd} = req.body
+  const user = users.find(user => user.name == name)
+  if (user) {
+      return res.render('error',{});
+  } 
+  user.push({name, pwd});
+  res.redirect('/');
 })
 
+//LOGIN
+app.get('/', (req, res) => {
+  res.render('login');
+});
 
 app.post('/login', async (req, res) => {
-  console.log(req.body.user);
-  //const user = res.send(req.cookies.usuario);
-  //console.log(user);
+  const {name, pwd} = req.body
 
-  if (req.body.user) {
+  const user = users.find(user => user.name == name && user.pwd == pwd)
+  if (!user) {
+      return res.render('error',{});
+  } 
+  req.session.user = name;
+  req.session.counter = 0;
+  res.render('guardarSocket', {products: prod, user: name});
+
+  /*if (req.body.user) {
       const prod = await productsDB.read();
       req.session.user = req.body.user;
       res.render('guardarSocket', {products: prod, user: req.session.user});
   } else {
       res.render('login');
-  }
+  }*/
 })
 
 app.get('/logout', async (req, res) => {
