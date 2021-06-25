@@ -14,6 +14,7 @@ import {
   mysql as configMysql,  
   //sqlite3 as configSqlite3 
 } from '../controllers/config.js'
+import UserMongoDB from '../controllers/usersMongoDb.js'
 import ProductsFirebase from '../controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
@@ -66,11 +67,11 @@ const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 
 app.use(cookieParser());
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
   console.dir(req.cookies)
   console.dir(req.signedCookies)
   next()
-})
+})*/
 
 //session setup
 app.use(session({
@@ -112,9 +113,9 @@ app.post('/register', (req, res) => {
   const {name, pwd} = req.body
   const user = users.find(user => user.name == name)
   if (user) {
-      return res.render('error',{});
+      return res.render('register-error',{});
   } 
-  user.push({name, pwd});
+  users.push({name, pwd});
   res.redirect('/');
 })
 
@@ -128,10 +129,11 @@ app.post('/login', async (req, res) => {
 
   const user = users.find(user => user.name == name && user.pwd == pwd)
   if (!user) {
-      return res.render('error',{});
+      return res.render('login-error',{});
   } 
   req.session.user = name;
   req.session.counter = 0;
+  const prod = await productsDB.read();
   res.render('guardarSocket', {products: prod, user: name});
 
   /*if (req.body.user) {
