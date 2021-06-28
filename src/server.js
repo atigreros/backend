@@ -19,12 +19,33 @@ import ProductsFirebase from '../controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import MongoStore from 'connect-mongo'
+//import bodyParser from 'body-parser'
+
+//**************PASSPORT*****************
+import bCrypt from 'bCrypt'
+import passport from 'passport'
+import LocalStrategy from 'passport-local'
+import { config } from 'process'
 
 
+//**************VARIABLES*****************
 let productsDB;
 let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+
+//**************CONSTANTS*****************
+const PORT = 8080;
+const app = express();
+const httpServer = new HttpServer(app)
+const io = new IOServer(httpServer)
+const messages = []
+const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 const persistence = 5;
+//DATABASE
 const users = [];
+//const localStrategy = LocalStrategy.Strategy;
+
+
 
 //**************Select Database**************
 switch(persistence) {
@@ -57,25 +78,103 @@ switch(persistence) {
     // code block
 }
 
-//constans definitions
-const PORT = 8080;
-const app = express();
-const httpServer = new HttpServer(app)
-const io = new IOServer(httpServer)
-const messages = []
-const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 
-app.use(cookieParser());
+  /* ------------------ PASSPORT -------------------- */
 
-/*app.use((req, res, next) => {
-  console.dir(req.cookies)
-  console.dir(req.signedCookies)
-  next()
-})*/
+  passport.use('register', new LocalStrategy({ passReqToCallback: true }, async (req, username, password, done) => {
+    //const { direccion } = req.body
+    //users = UserDB.read();
+    const usuario = await UserDB.readOne(username);
+    //const usuario = users.find(usuario => usuario.username == username)
+    console.log(usuario)
+    if (usuario) {
+      return done(null, false); //'already registered')
+    }
+  
+    const user = {
+      username,
+      password,
+      //direccion,
+    }
+    console.log('Antes del add en mongo');
+    console.log(user);
+    UserDB.add(user)
+    //users.push(user)
+    console.log(user);
+  
+    return done(null, user)
+  }));
+
+
+  passport.use('login', new LocalStrategy( async (username, password, done) => {
+
+    const user = await UserDB.readOne(username);
+  
+    if (!user) {
+      return done(null, false)
+    }
+  
+    if (user.password != password) {
+      return done(null, false)
+    }
+  
+    user.contador = 0
+    console.log('login with user');
+    console.log(user);
+    return done(null, user);
+  }));
+
+
+/*const isValidPassword = function (user,password) {
+  return bCrypt.compareSync(password, user.password)
+}
+
+passport.use('register', new LocalStrategy({
+  passReqToCallback : true
+  },
+  function(req, username, password, done) {
+    //Encontrar un usuario en Mongo con el username informado
+    UserDB.findOne({'username':username}, 
+    function (err,user) {
+      //En caso de error, retornar usando el método done()
+      if (err) {
+        console.log('Error en el SignUp: ' + err);
+        return done(err);
+      }
+      //Ya existe el usuario
+      if (user) {
+        console.log('Usuario ya existe');
+        return done(null, false,
+          console.log('message','El usuario ya existe'))
+      } else {
+        //Si no hay usuario con ese email, crearlo
+        var newUser = new UserDB();
+        newUser.username = username;
+        newUser.password = createHash(password);
+        //newUser.email = req.body.email;
+        //newUser.firstName = req.body.firstName;
+
+        //Guardar el usuario
+        newUser.save(function(err) {
+          if (err) {
+            console.log('Error guardando el usuario: ' + err);
+            throw err;
+          }
+          console.log('Registro de usuario exitoso');
+          return done(null, newUser);
+        });
+      }
+    })
+  }
+));
+
+
+var createHash = function(password) {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
 
 //session setup
-app.use(session({
-  //**************Redis database*********
+/*app.use(session({
   store: MongoStore.create({mongoUrl: configmongodbRemote.connectionString}),
   ttl:300,
   mongoOptions: advacedOptions,
@@ -85,8 +184,68 @@ app.use(session({
   cookie:{
     maxAge: 60000
   }
+}));*/
 
-}));
+/*passport.use('login', new LocalStrategy({
+    passReqToCallback : true},
+    function(req, username, password, done) {
+      //check in Mongo if username exist or not
+      UserDB.findOne({'username': username},
+        function(err,user) {
+          //En caso de error, retornar usando el método done()
+          if(err)
+          return done(err);
+          //El usuario no existe, log de eror y redireccionar atrás
+          if(!user) {
+            console.log('No se encontró usuario: '+ username);
+            return done(null,false,
+              console.log('message','Usuario no encontrado')
+            );
+          }
+          //El usuario existe, pero password equivocado
+          if(!isValidPassword(user,password)) {
+            console.log('Password inválido');
+            return done(null, false,
+              console.log('message','Password inválido')
+            );
+          }
+          //Usuario y password coinciden
+          //return usuario desde el método done lo que será manejado como éxito
+          return done(null, user);
+        }
+      );
+    })
+  );*/
+
+
+passport.serializeUser(function(user, done) {
+  console.log('serialize');
+  console.log(user);
+  done(null, user.username);
+});
+
+passport.deserializeUser(async function(username, done) {
+  const user = await UserDB.readOne(username)
+  done(null, user);
+});
+
+
+/* --------------------- MIDDLEWARE --------------------------- */
+
+app.use(cookieParser());
+
+app.use(session({
+  secret: 'shhhhhhhhhhhhhhhhhhhhh',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 60000
+  }
+}))
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //indicates that we will use ejs
 app.set('view engine', 'ejs');
@@ -98,61 +257,73 @@ app.use(express.static('public'));
 app.use('/', createProductsRouter())
 
 
-/*app.get('/', (req, res, next) => {
-  req.session.user = req.body.user;
-  res.cookie('usuario', req.body.user, {maxAge: 30000});
-  res.render('login');
-})*/
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
 
-//REGISTER
+/* --------------------- AUTH --------------------------- */
+
+function isAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect('/')
+  }
+}
+
+
+
+/* --------------------- ROUTES --------------------------- */
+
+// REGISTER
 app.get('/register', (req, res) => {
   res.render('register');
 });
 
-app.post('/register', (req, res) => {
-  const {name, pwd} = req.body
-  const user = users.find(user => user.name == name)
-  if (user) {
-      return res.render('register-error',{});
-  } 
-  users.push({name, pwd});
-  res.redirect('/');
+app.post('/register', passport.authenticate('register', { failureRedirect: '/failregister', successRedirect: '/' }))
+
+app.get('/failregister', (req, res) => {
+  res.render('register-error', {});
 })
 
-//LOGIN
+// LOGIN
 app.get('/', (req, res) => {
   res.render('login');
 });
 
-app.post('/login', async (req, res) => {
-  const {name, pwd} = req.body
+app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
 
-  const user = users.find(user => user.name == name && user.pwd == pwd)
-  if (!user) {
-      return res.render('login-error',{});
-  } 
-  req.session.user = name;
-  req.session.counter = 0;
-  const prod = await productsDB.read();
-  res.render('guardarSocket', {products: prod, user: name});
-
-  /*if (req.body.user) {
-      const prod = await productsDB.read();
-      req.session.user = req.body.user;
-      res.render('guardarSocket', {products: prod, user: req.session.user});
-  } else {
-      res.render('login');
-  }*/
+app.get('/faillogin', (req, res) => {
+  res.render('login-error', {});
 })
 
-app.get('/logout', async (req, res) => {
-  if (req.session.user) {
-    res.render('logout', {user: req.session.user});
-    req.session.destroy();  
+
+// DATA
+app.get('/data', isAuth, async (req, res) => {
+  console.log('entré a data');
+  console.log(req.user);
+
+  if (req.user.contador == undefined || !req.user.contador) {
+     req.user.contador = 0
   }
+
+  req.user.contador++
+  const prod = await productsDB.read();
+
+  res.render('guardarSocket', {
+    products: prod,
+    user: req.user,
+    contador: req.user.contador
+  });
 })
 
 
+/* --------- LOGOUT ---------- */
+app.get('/logout', async (req, res) => {
+  let lastUser = req.user;
+  req.logout();
+  res.render('logout', {user: lastUser});
+})
 
 
 //socket connection

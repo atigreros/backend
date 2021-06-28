@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
 let UsersSquema = new mongoose.Schema({
-        userName: {type: String, require:true, max: 60},
-        userPassword: {type: String, require:true, max: 60},
+        username: {type: String, require:true, max: 60},
+        password: {type: String, require:true, max: 60},
 });
 
 const usersDAO = mongoose.model('users', UsersSquema);
@@ -33,9 +33,10 @@ export default class UsersDB{
   {
       try{
           console.log("Add Users Mongoose");
+          console.log(data);
           const newUsers = {
-            userName: data.name,
-            userPassword: data.pwd,
+            username: data.username,
+            password: data.password,
           };
 
           let usersSaveModel = await new usersDAO(newUsers);
@@ -56,6 +57,15 @@ export default class UsersDB{
       console.log('user leido desde Mongo: ' + users);
       return users;
   }
+
+  async readOne(username)
+  {
+      console.log("ReadOne users from Mongoose");
+      let user = await usersDAO.findOne({ username: username});
+      console.log('user  leido desde Mongo: ' + user);
+      return user;
+  }
+
 }    
 
     
