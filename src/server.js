@@ -25,8 +25,8 @@ import MongoStore from 'connect-mongo'
 import bCrypt from 'bCrypt'
 import passport from 'passport'
 import LocalStrategy from 'passport-local'
+import facebookStrategy from 'passport-facebook'
 import { config } from 'process'
-
 
 //**************VARIABLES*****************
 let productsDB;
@@ -41,6 +41,7 @@ const io = new IOServer(httpServer)
 const messages = []
 const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 const persistence = 5;
+const FacebookStrategy = facebookStrategy.Strategy;
 //DATABASE
 const users = [];
 //const localStrategy = LocalStrategy.Strategy;
@@ -79,8 +80,35 @@ switch(persistence) {
 }
 
 
-  /* ------------------ PASSPORT -------------------- */
+/* ------------------ PASSPORT FACEBOOK -------------------- */
+passport.use(new FacebookStrategy ({
+  clientID : "332225778310685",//"241687124098469",
+  clientSecret : "a9bca61479654d390714ed2530db7a3d",//"8116f232e1206825ad71d369488f50cb",
+  callbackURL : "/auth/facebook/callback",
+  profileFields: ['id', 'displayName', 'photos', 'emails'],
+  scope: ['email']
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log("token facebook");
+    console.log(profile)
+    return done(null, profile);
+    }
+));
 
+passport.serializeUser(function (user, done) {
+  console.log("serializeUser");
+  done(null, user);
+});
+
+passport.deserializeUser(function (obj, done) {
+    console.log("deserializeUser");
+    done(null, obj);
+});
+
+
+
+/* ------------------ PASSPORT MONGO-------------------- */
+/*
   passport.use('register', new LocalStrategy({ passReqToCallback: true }, async (req, username, password, done) => {
     //const { direccion } = req.body
     //users = UserDB.read();
@@ -105,7 +133,7 @@ switch(persistence) {
     return done(null, user)
   }));
 
-
+  
   passport.use('login', new LocalStrategy( async (username, password, done) => {
 
     const user = await UserDB.readOne(username);
@@ -124,111 +152,7 @@ switch(persistence) {
     return done(null, user);
   }));
 
-
-/*const isValidPassword = function (user,password) {
-  return bCrypt.compareSync(password, user.password)
-}
-
-passport.use('register', new LocalStrategy({
-  passReqToCallback : true
-  },
-  function(req, username, password, done) {
-    //Encontrar un usuario en Mongo con el username informado
-    UserDB.findOne({'username':username}, 
-    function (err,user) {
-      //En caso de error, retornar usando el método done()
-      if (err) {
-        console.log('Error en el SignUp: ' + err);
-        return done(err);
-      }
-      //Ya existe el usuario
-      if (user) {
-        console.log('Usuario ya existe');
-        return done(null, false,
-          console.log('message','El usuario ya existe'))
-      } else {
-        //Si no hay usuario con ese email, crearlo
-        var newUser = new UserDB();
-        newUser.username = username;
-        newUser.password = createHash(password);
-        //newUser.email = req.body.email;
-        //newUser.firstName = req.body.firstName;
-
-        //Guardar el usuario
-        newUser.save(function(err) {
-          if (err) {
-            console.log('Error guardando el usuario: ' + err);
-            throw err;
-          }
-          console.log('Registro de usuario exitoso');
-          return done(null, newUser);
-        });
-      }
-    })
-  }
-));
-
-
-var createHash = function(password) {
-  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-}
-
-//session setup
-/*app.use(session({
-  store: MongoStore.create({mongoUrl: configmongodbRemote.connectionString}),
-  ttl:300,
-  mongoOptions: advacedOptions,
-  secret: 'secreto',
-  resave: false,
-  saveUninitialized: false,
-  cookie:{
-    maxAge: 60000
-  }
-}));*/
-
-/*passport.use('login', new LocalStrategy({
-    passReqToCallback : true},
-    function(req, username, password, done) {
-      //check in Mongo if username exist or not
-      UserDB.findOne({'username': username},
-        function(err,user) {
-          //En caso de error, retornar usando el método done()
-          if(err)
-          return done(err);
-          //El usuario no existe, log de eror y redireccionar atrás
-          if(!user) {
-            console.log('No se encontró usuario: '+ username);
-            return done(null,false,
-              console.log('message','Usuario no encontrado')
-            );
-          }
-          //El usuario existe, pero password equivocado
-          if(!isValidPassword(user,password)) {
-            console.log('Password inválido');
-            return done(null, false,
-              console.log('message','Password inválido')
-            );
-          }
-          //Usuario y password coinciden
-          //return usuario desde el método done lo que será manejado como éxito
-          return done(null, user);
-        }
-      );
-    })
-  );*/
-
-
-passport.serializeUser(function(user, done) {
-  console.log('serialize');
-  console.log(user);
-  done(null, user.username);
-});
-
-passport.deserializeUser(async function(username, done) {
-  const user = await UserDB.readOne(username)
-  done(null, user);
-});
-
+*/
 
 /* --------------------- MIDDLEWARE --------------------------- */
 
@@ -275,6 +199,22 @@ function isAuth(req, res, next) {
 
 /* --------------------- ROUTES --------------------------- */
 
+app.get('/', (req, res) => {
+  console.log("get /");
+  if (req.isAuthenticated()) {
+      res.redirect('/data')
+  } else {
+      res.redirect('/login')
+  }
+})
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+passport.authenticate('facebook', 
+        {successRedirect: '/data', failureRedirect: '/faillogin'}));
+          
+
 // REGISTER
 app.get('/register', (req, res) => {
   res.render('register');
@@ -287,11 +227,11 @@ app.get('/failregister', (req, res) => {
 })
 
 // LOGIN
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
   res.render('login');
 });
 
-app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
+//app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
 
 app.get('/faillogin', (req, res) => {
   res.render('login-error', {});
