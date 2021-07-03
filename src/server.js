@@ -81,28 +81,26 @@ switch(persistence) {
 
 
 /* ------------------ PASSPORT FACEBOOK -------------------- */
-passport.use(new FacebookStrategy ({
-  clientID : "332225778310685",//"241687124098469",
-  clientSecret : "a9bca61479654d390714ed2530db7a3d",//"8116f232e1206825ad71d369488f50cb",
-  callbackURL : "/auth/facebook/callback",
-  profileFields: ['id', 'displayName', 'photos', 'emails'],
-  scope: ['email']
-  },
-  function(accessToken, refreshToken, profile, done) {
-    console.log("token facebook");
-    console.log(profile)
-    return done(null, profile);
-    }
-));
+const FACEBOOK_CLIENT_ID = '332225778310685';
+const FACEBOOK_CLIENT_SECRET = 'a9bca61479654d390714ed2530db7a3d';
 
-passport.serializeUser(function (user, done) {
-  console.log("serializeUser");
-  done(null, user);
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_CLIENT_ID,
+    clientSecret: FACEBOOK_CLIENT_SECRET,
+    callbackURL: '/auth/facebook/callback',
+    profileFields: ['id', 'displayName', 'photos', 'emails'],
+    scope: ['email']
+}, function (accessToken, refreshToken, userProfile, done) {
+    console.log(userProfile)
+    return done(null, userProfile);
+}));
+
+passport.serializeUser(function (user, cb) {
+    cb(null, user);
 });
 
-passport.deserializeUser(function (obj, done) {
-    console.log("deserializeUser");
-    done(null, obj);
+passport.deserializeUser(function (obj, cb) {
+    cb(null, obj);
 });
 
 
@@ -155,35 +153,32 @@ passport.deserializeUser(function (obj, done) {
 */
 
 /* --------------------- MIDDLEWARE --------------------------- */
-
-app.use(cookieParser());
-
+app.use(cookieParser())
 app.use(session({
-  secret: 'shhhhhhhhhhhhhhhhhhhhh',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 60000
-  }
+    secret: 'shhhhhhhhhhhhhhhhhhhhh',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 60000
+    }
 }))
 
-
+/* ------------------ PASSPORT -------------------- */
 app.use(passport.initialize());
 app.use(passport.session());
+/* ------------------------------------------------ */
 
 //indicates that we will use ejs
 app.set('view engine', 'ejs');
-
 app.set("views", "./views");
-app.use(express.static('public'));
-
-//express rendering
-app.use('/', createProductsRouter())
-
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+//express rendering
+//app.use('/', createProductsRouter())
+
 
 /* --------------------- AUTH --------------------------- */
 
@@ -194,7 +189,6 @@ function isAuth(req, res, next) {
     res.redirect('/')
   }
 }
-
 
 
 /* --------------------- ROUTES --------------------------- */
@@ -210,13 +204,14 @@ app.get('/', (req, res) => {
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
-app.get('/auth/facebook/callback',
-passport.authenticate('facebook', 
-        {successRedirect: '/data', failureRedirect: '/faillogin'}));
-          
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/faillogin'
+}));
 
+          
 // REGISTER
-app.get('/register', (req, res) => {
+/*app.get('/register', (req, res) => {
   res.render('register');
 });
 
@@ -224,7 +219,7 @@ app.post('/register', passport.authenticate('register', { failureRedirect: '/fai
 
 app.get('/failregister', (req, res) => {
   res.render('register-error', {});
-})
+})*/
 
 // LOGIN
 app.get('/login', (req, res) => {
@@ -239,7 +234,32 @@ app.get('/faillogin', (req, res) => {
 
 
 // DATA
-app.get('/data', isAuth, async (req, res) => {
+app.get('/data', async (req, res) => {
+  if (req.isAuthenticated()) {
+      //reinicio contador
+      if (!req.user.contador) req.user.contador = 0
+      req.user.contador++
+      const prod = await productsDB.read();
+
+      res.render('guardarSocket', {
+        products: prod,
+        user: req.user,
+        contador: req.user.contador
+        /*
+          nombre: req.user.displayName,
+          foto: req.user.photos[0].value,
+          email: req.user.emails[0].value,
+          contador: req.user.contador*/
+      });
+  }
+  else {
+      res.redirect('/login')
+  }
+})
+
+
+/* --------- DATOS ---------- */
+/*app.get('/data', isAuth, async (req, res) => {
   console.log('entré a data');
   console.log(req.user);
 
@@ -255,7 +275,7 @@ app.get('/data', isAuth, async (req, res) => {
     user: req.user,
     contador: req.user.contador
   });
-})
+})*/
 
 
 /* --------- LOGOUT ---------- */
