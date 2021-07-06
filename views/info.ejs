@@ -1,0 +1,45 @@
+<%- include('./layout') -%>
+<body>
+<h3>Process</h3>
+  <table class="table table-primary">
+    <tbody>
+        <tr>
+          <td>Argumentos de entrada</td>
+          <td><%= argv1%> </b> <%= argv2%></td>
+        </tr>
+
+        <tr>
+          <td>Nombre de la plataforma</td>
+          <td><%= platfName%></td>
+        </tr>
+
+        <tr>
+          <td>Version de node.js</td>
+          <td><%= verNode%></td>
+        </tr>
+
+        <tr>
+          <td>Uso de memoria</td>
+          <td><%= memUse%></td>
+        </tr>
+
+        <tr>
+          <td>Path de ejecución</td>
+          <td><%= pathExec%></td>
+        </tr>
+        
+        <tr>
+          <td>Process Id</td>
+          <td><%= procId%></td>
+        </tr>
+
+        <tr>
+          <td>Carpeta corriente</td>
+          <td><%= currentDir%></td>
+        </tr>
+
+    </tbody>
+  </table>
+
+</body>
+</html>

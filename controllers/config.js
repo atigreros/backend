@@ -36,4 +36,6 @@ const firebaseAccount = {
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-bjtjh%40ecommerce-4940a.iam.gserviceaccount.com"
 }
 
-export { mysql, sqlite3, mongodbLocal, mongodbRemote, firebaseAccount }
+const maxQuantityRandom = 100000000;
+
+export { mysql, sqlite3, mongodbLocal, mongodbRemote, firebaseAccount, maxQuantityRandom}

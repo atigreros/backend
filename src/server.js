@@ -1,32 +1,32 @@
 import express from 'express'
-import { createProductsRouter } from '../routers/productsRouter.js'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
-//import File from '../controllers/FileSystem.js'; //persistence with fileSystem
-//import MessageDB from '../controllers/messageDb.js'
+
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
 import ProductsMongoDB from '../controllers/productsMongoDb.js'
 import { 
   mongodbRemote as configmongodbRemote, 
   mongodbLocal as configmongodbLocal,
-  mysql as configMysql,  
-  //sqlite3 as configSqlite3 
+  mysql as configMysql,
+  maxQuantityRandom as maxQtyRandom
 } from '../controllers/config.js'
 import UserMongoDB from '../controllers/usersMongoDb.js'
 import ProductsFirebase from '../controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
-import MongoStore from 'connect-mongo'
-//import bodyParser from 'body-parser'
 
 //**************PASSPORT*****************
-import bCrypt from 'bCrypt'
 import passport from 'passport'
-import LocalStrategy from 'passport-local'
 import facebookStrategy from 'passport-facebook'
+
+//**************PAROCESS*****************
+import { inspect } from 'util'
+import { fork } from 'child_process'
+import { waitForDebugger } from 'inspector'
 import { config } from 'process'
+
 
 //**************VARIABLES*****************
 let productsDB;
@@ -44,7 +44,7 @@ const persistence = 5;
 const FacebookStrategy = facebookStrategy.Strategy;
 //DATABASE
 const users = [];
-//const localStrategy = LocalStrategy.Strategy;
+
 
 
 
@@ -81,8 +81,8 @@ switch(persistence) {
 
 
 /* ------------------ PASSPORT FACEBOOK -------------------- */
-const FACEBOOK_CLIENT_ID = '332225778310685';
-const FACEBOOK_CLIENT_SECRET = 'a9bca61479654d390714ed2530db7a3d';
+let FACEBOOK_CLIENT_ID = '332225778310685';
+let FACEBOOK_CLIENT_SECRET = 'a9bca61479654d390714ed2530db7a3d';
 
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_CLIENT_ID,
@@ -105,52 +105,7 @@ passport.deserializeUser(function (obj, cb) {
 
 
 
-/* ------------------ PASSPORT MONGO-------------------- */
-/*
-  passport.use('register', new LocalStrategy({ passReqToCallback: true }, async (req, username, password, done) => {
-    //const { direccion } = req.body
-    //users = UserDB.read();
-    const usuario = await UserDB.readOne(username);
-    //const usuario = users.find(usuario => usuario.username == username)
-    console.log(usuario)
-    if (usuario) {
-      return done(null, false); //'already registered')
-    }
-  
-    const user = {
-      username,
-      password,
-      //direccion,
-    }
-    console.log('Antes del add en mongo');
-    console.log(user);
-    UserDB.add(user)
-    //users.push(user)
-    console.log(user);
-  
-    return done(null, user)
-  }));
 
-  
-  passport.use('login', new LocalStrategy( async (username, password, done) => {
-
-    const user = await UserDB.readOne(username);
-  
-    if (!user) {
-      return done(null, false)
-    }
-  
-    if (user.password != password) {
-      return done(null, false)
-    }
-  
-    user.contador = 0
-    console.log('login with user');
-    console.log(user);
-    return done(null, user);
-  }));
-
-*/
 
 /* --------------------- MIDDLEWARE --------------------------- */
 app.use(cookieParser())
@@ -209,17 +164,6 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/faillogin'
 }));
 
-          
-// REGISTER
-/*app.get('/register', (req, res) => {
-  res.render('register');
-});
-
-app.post('/register', passport.authenticate('register', { failureRedirect: '/failregister', successRedirect: '/' }))
-
-app.get('/failregister', (req, res) => {
-  res.render('register-error', {});
-})*/
 
 // LOGIN
 app.get('/login', (req, res) => {
@@ -245,11 +189,7 @@ app.get('/data', async (req, res) => {
         products: prod,
         user: req.user,
         contador: req.user.contador
-        /*
-          nombre: req.user.displayName,
-          foto: req.user.photos[0].value,
-          email: req.user.emails[0].value,
-          contador: req.user.contador*/
+
       });
   }
   else {
@@ -257,25 +197,71 @@ app.get('/data', async (req, res) => {
   }
 })
 
-
-/* --------- DATOS ---------- */
-/*app.get('/data', isAuth, async (req, res) => {
-  console.log('entré a data');
-  console.log(req.user);
-
-  if (req.user.contador == undefined || !req.user.contador) {
-     req.user.contador = 0
-  }
-
-  req.user.contador++
-  const prod = await productsDB.read();
-
-  res.render('guardarSocket', {
-    products: prod,
-    user: req.user,
-    contador: req.user.contador
+//info
+app.get('/info', async (req, res) => {
+  res.render('info', {
+    argv1: inspect(process.argv[2]),
+    argv2: inspect(process.argv[3]),
+    platfName: inspect(process.platform),
+    verNode: inspect(process.version),
+    memUse: inspect(process.memoryUsage()),
+    pathExec: inspect(process.cwd()),
+    procId: inspect(process.pid),
+    currentDir: inspect(process.argv[0])
   });
+})
+
+//randoms
+/*app.get('/randoms', async (req, res) => {
+    let quantity=100000000;
+    if (req.query.cant) {
+      quantity = req.query.cant;
+    }
+    const child = fork('../backend/src/child.js', [quantity]);
+    console.log(child);
+    res.render('randoms', {cant: quantity});
+
+    // child.on('exit', function() {
+    //   res.render('randoms', {cant: 352});
+    // })
 })*/
+
+
+/*app.get('/rnd', (req, res) => {
+  if (req.isAuthenticated()) {
+      req.user.counter = req.user.counter = 0 || req.user.counter++;
+      const cant = Number(req.query.cant) || config.random_numbers;
+      const forked = fork('./helper/random.js');
+      forked.on('message', numbers => {
+          res.json(numbers);
+      })
+      forked.send(cant);
+  }
+});*/
+
+app.get('/randoms', (req, res) => {
+  const quantity= Number(req.query.cant) || maxQtyRandom;
+  /*if (req.query.cant)
+    quantity = req.query.cant;*/
+  
+  const forked = fork('./src/child.js');//, [quantity]);
+  //forked.send(quantity);
+  console.log('inicio');
+  
+  setTimeout(() => {
+         forked.send(quantity);
+     }, 100);
+
+
+
+  forked.on('message', ({quantity, numbers})=>{
+    //console.log(`child_process exited with code ${code}`);
+    console.log('message from child');
+    console.log(numbers);
+    res.render('randoms', {quantity: quantity, numbers: numbers});
+  });
+
+});
 
 
 /* --------- LOGOUT ---------- */
@@ -323,9 +309,21 @@ io.on('connection', socket => {
 //Server connection start
 const server = httpServer.listen(PORT, ()=>{
   console.log(`HTTP Server listening on port: ${server.address().port}`)
+  if (inspect(process.argv[2]))
+    FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
+  if (inspect(process.argv[3]))
+    FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+
+    //console.log(`FACEBOOK_CLIENT_ID = ${inspect(process.argv[2])}`)
+  //console.log(`FACEBOOK_CLIENT_SECRET = ${inspect(process.argv[3])}`)
 })
 
 server.on('error', error => {
   console.log(error.message)
+})
+
+//Process
+process.on('exit', (code)=>{
+  console.log('About to exit with code: ', code);
 })
 
