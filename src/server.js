@@ -24,8 +24,10 @@ import facebookStrategy from 'passport-facebook'
 //**************PAROCESS*****************
 import { inspect } from 'util'
 import { fork } from 'child_process'
-import { waitForDebugger } from 'inspector'
-import { config } from 'process'
+import cluster from 'cluster'
+import CPUs from 'os'
+/*import { waitForDebugger } from 'inspector'
+import { config } from 'process'*/
 
 
 //**************VARIABLES*****************
@@ -42,6 +44,7 @@ const messages = []
 const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 const persistence = 5;
 const FacebookStrategy = facebookStrategy.Strategy;
+const numCPUs = CPUs.cpus().length;
 //DATABASE
 const users = [];
 
@@ -207,7 +210,8 @@ app.get('/info', async (req, res) => {
     memUse: inspect(process.memoryUsage()),
     pathExec: inspect(process.cwd()),
     procId: inspect(process.pid),
-    currentDir: inspect(process.argv[0])
+    currentDir: inspect(process.argv[0]),
+    numProcess: numCPUs
   });
 })
 
@@ -306,24 +310,89 @@ io.on('connection', socket => {
 
 })
 
-//Server connection start
+
+
+/*
 const server = httpServer.listen(PORT, ()=>{
   console.log(`HTTP Server listening on port: ${server.address().port}`)
   if (inspect(process.argv[2]))
     FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
   if (inspect(process.argv[3]))
     FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
-
-    //console.log(`FACEBOOK_CLIENT_ID = ${inspect(process.argv[2])}`)
-  //console.log(`FACEBOOK_CLIENT_SECRET = ${inspect(process.argv[3])}`)
 })
 
 server.on('error', error => {
   console.log(error.message)
-})
+})*/
 
 //Process
 process.on('exit', (code)=>{
   console.log('About to exit with code: ', code);
 })
 
+
+/**
+ * Parámetros de entrada
+ */
+let START_MODE = 'FORK';
+
+if (inspect(process.argv[4]))
+{  
+  let arg4 = inspect(process.argv[4]);
+  console.log('Parámetros 4: ',inspect(process.argv[4]));
+  console.log(arg4);
+  if (arg4 === "'CLUSTER'")
+  {
+    console.log('es cluster');
+    START_MODE = 'CLUSTER';
+  }
+  console.log(START_MODE);
+  
+}
+
+switch(START_MODE) {
+  case ('CLUSTER'):
+    console.log('MODO CLUSTER');
+    /* --------------------------------------------------------------------------- */
+    /* MASTER */
+    if (cluster.isMaster) {
+      console.log(numCPUs)
+      console.log(`PID MASTER ${process.pid}`)
+      for (let i = 0; i < numCPUs; i++) {
+        cluster.fork()
+      }
+      cluster.on('exit', worker => {
+        console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
+        cluster.fork()
+      })
+    }
+    /* --------------------------------------------------------------------------- */
+    /* WORKERS */
+    else {
+      app.listen(PORT, err => {
+        if (!err){
+          console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
+          if (inspect(process.argv[2]))
+            FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
+          if (inspect(process.argv[3]))
+            FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+        }
+      })
+    }
+
+  break;
+
+  default: //FORK
+    //Server connection start
+    console.log('MODO FORK');
+    app.listen(PORT, err => {
+      if (!err){
+        console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
+        if (inspect(process.argv[2]))
+          FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
+        if (inspect(process.argv[3]))
+          FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+      }
+    })
+  break;
+}

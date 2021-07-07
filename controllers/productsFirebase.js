@@ -1,4 +1,4 @@
-import { query } from 'express';
+//import { query } from 'express';
 import firebase from 'firebase-admin';
 import {firebaseAccount as serviceAccount} from './config.js'
 

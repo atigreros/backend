@@ -1,5 +1,5 @@
-import ProductsDB from './productsDb.js'
-import { mysql as configMysql } from './config.js'
+// import ProductsDB from './productsDb.js'
+// import { mysql as configMysql } from './config.js'
 
 let products = [    {   
 "id": 1,

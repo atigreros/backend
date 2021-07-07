@@ -1,11 +1,13 @@
 {
   "type": "module",
-  "name": "desafio28",
+  "name": "desafio29",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "prod": "forever start ./src/server.js",
+    "pm2": "pm2 start ./src/server.js"
   },
   "keywords": [],
   "author": "",
