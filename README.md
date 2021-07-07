@@ -3,7 +3,9 @@ backend class
 
 ejecutar:
 npm i
-npm start
+npm start FACEBOOK_CLIENT_ID FACEBOOK_CLIENT_SECRET MODO 
+
+MODO puede ser CLUSTER o FORK
 
 
 Para ejecutar en el modo forever, es necesario instalar una versión de node 13.14 o inferior.
