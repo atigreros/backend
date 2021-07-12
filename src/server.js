@@ -36,7 +36,8 @@ let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmo
 let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 
 //**************CONSTANTS*****************
-const PORT = 8080;
+//const PORT = 8081;
+const PORT = parseInt(process.argv[2]) || 8080;
 const app = express();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
@@ -132,7 +133,9 @@ app.set("views", "./views");
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'));
+
+//Se comenta esta linea, pues será nginx quien se encargará de ofrecer los recursos estáticos
+//app.use(express.static('public'));
 
 //express rendering
 //app.use('/', createProductsRouter())
@@ -200,11 +203,19 @@ app.get('/data', async (req, res) => {
   }
 })
 
+app.get('/datos', (req,res) =>  {
+  console.log('port:', PORT, 'Fyh:', Date.now());
+  res.send(`Servidor express (NGINX) en ${PORT} <b>PID ${process.pid}<b> - ${new Date().toLocaleDateString()}`);
+})
+
 //info
 app.get('/info', async (req, res) => {
   res.render('info', {
-    argv1: inspect(process.argv[2]),
-    argv2: inspect(process.argv[3]),
+    argv2: inspect(process.argv[2]),
+    argv3: inspect(process.argv[3]),
+    argv4: inspect(process.argv[4]),
+    argv5: inspect(process.argv[5]),
+    argv6: inspect(process.argv[6]),
     platfName: inspect(process.platform),
     verNode: inspect(process.version),
     memUse: inspect(process.memoryUsage()),
@@ -336,12 +347,14 @@ process.on('exit', (code)=>{
  */
 let START_MODE = 'FORK';
 
-if (inspect(process.argv[4]))
+if (inspect(process.argv[3]))
 {  
-  let arg4 = inspect(process.argv[4]);
-  console.log('Parámetros 4: ',inspect(process.argv[4]));
-  console.log(arg4);
-  if (arg4 === "'CLUSTER'")
+  let arg3 = inspect(process.argv[3]);
+  console.log('Parámetro 2: ',inspect(process.argv[2]));
+  console.log('Parámetro 3: ',inspect(process.argv[3]));
+  console.log('Parámetro 4: ',inspect(process.argv[4]));
+  console.log(arg3);
+  if (arg3 === "'CLUSTER'" || arg3 === "CLUSTER")
   {
     console.log('es cluster');
     START_MODE = 'CLUSTER';
@@ -372,10 +385,10 @@ switch(START_MODE) {
       app.listen(PORT, err => {
         if (!err){
           console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
-          if (inspect(process.argv[2]))
-            FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
-          if (inspect(process.argv[3]))
-            FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+          if (inspect(process.argv[4]))
+            FACEBOOK_CLIENT_ID = inspect(process.argv[4]);
+          if (inspect(process.argv[5]))
+            FACEBOOK_CLIENT_SECRET = inspect(process.argv[5]);
         }
       })
     }
@@ -388,10 +401,10 @@ switch(START_MODE) {
     app.listen(PORT, err => {
       if (!err){
         console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
-        if (inspect(process.argv[2]))
-          FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
-        if (inspect(process.argv[3]))
-          FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+        if (inspect(process.argv[4]))
+          FACEBOOK_CLIENT_ID = inspect(process.argv[5]);
+        if (inspect(process.argv[4]))
+          FACEBOOK_CLIENT_SECRET = inspect(process.argv[5]);
       }
     })
   break;
