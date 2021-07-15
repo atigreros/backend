@@ -2,6 +2,7 @@ import express from 'express'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
+import logger from './logger.js'
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -21,14 +22,12 @@ import cookieParser from 'cookie-parser'
 import passport from 'passport'
 import facebookStrategy from 'passport-facebook'
 
-//**************PAROCESS*****************
+//**************PROCESS*****************
 import { inspect } from 'util'
 import { fork } from 'child_process'
 import cluster from 'cluster'
 import CPUs from 'os'
-/*import { waitForDebugger } from 'inspector'
-import { config } from 'process'*/
-
+import compression  from  'compression'
 
 //**************VARIABLES*****************
 let productsDB;
@@ -95,7 +94,8 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'photos', 'emails'],
     scope: ['email']
 }, function (accessToken, refreshToken, userProfile, done) {
-    console.log(userProfile)
+    logger.info('Facebook User Profile %s', userProfile)
+    //console.log(userProfile)
     return done(null, userProfile);
 }));
 
@@ -155,7 +155,8 @@ function isAuth(req, res, next) {
 /* --------------------- ROUTES --------------------------- */
 
 app.get('/', (req, res) => {
-  console.log("get /");
+  logger.info("Passing by get /")
+  //console.log("get /");
   if (req.isAuthenticated()) {
       res.redirect('/data')
   } else {
@@ -204,12 +205,31 @@ app.get('/data', async (req, res) => {
 })
 
 app.get('/datos', (req,res) =>  {
-  console.log('port:', PORT, 'Fyh:', Date.now());
+  logger.info('Data information port: %s, date(Fyh): %s', PORT, Date.now())
+  //console.log('port:', PORT, 'Fyh:', Date.now());
   res.send(`Servidor express (NGINX) en ${PORT} <b>PID ${process.pid}<b> - ${new Date().toLocaleDateString()}`);
 })
 
 //info
 app.get('/info', async (req, res) => {
+  res.render('info', {
+    argv2: inspect(process.argv[2]),
+    argv3: inspect(process.argv[3]),
+    argv4: inspect(process.argv[4]),
+    argv5: inspect(process.argv[5]),
+    argv6: inspect(process.argv[6]),
+    platfName: inspect(process.platform),
+    verNode: inspect(process.version),
+    memUse: inspect(process.memoryUsage()),
+    pathExec: inspect(process.cwd()),
+    procId: inspect(process.pid),
+    currentDir: inspect(process.argv[0]),
+    numProcess: numCPUs
+  });
+})
+
+//with compression
+app.get('/infozip', compression(), (req, res) => {
   res.render('info', {
     argv2: inspect(process.argv[2]),
     argv3: inspect(process.argv[3]),
@@ -261,7 +281,7 @@ app.get('/randoms', (req, res) => {
   
   const forked = fork('./src/child.js');//, [quantity]);
   //forked.send(quantity);
-  console.log('inicio');
+  logger.info('start Randoms');
   
   setTimeout(() => {
          forked.send(quantity);
@@ -271,8 +291,7 @@ app.get('/randoms', (req, res) => {
 
   forked.on('message', ({quantity, numbers})=>{
     //console.log(`child_process exited with code ${code}`);
-    console.log('message from child');
-    console.log(numbers);
+    logger.warn('message from child %s', numbers);
     res.render('randoms', {quantity: quantity, numbers: numbers});
   });
 
@@ -289,19 +308,19 @@ app.get('/logout', async (req, res) => {
 
 //socket connection
 io.on('connection', socket => {
-  console.log('Nuevo cliente conectado!')
+  logger.warn('New user connected!')
   socket.emit('messages', messages)
 
 
   //When click insert from user
   socket.on('boton', async function(newProduct) { 
-    console.log('Click del usuario');
+    logger.info('Click del usuario');
     //const prod = products.add(newProduct);
     //console.log(newProduct);
 
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();
-    console.log(valid);
+    logger.info(valid);
 
     io.sockets.emit('productsToClient', newProduct);
   })
@@ -311,10 +330,10 @@ io.on('connection', socket => {
 
     messages.push(data);
    
-    console.log(data)
+    logger.info('Getting message from socket %s',data)
     await messageDB.add(data); 
     let valid =  await messageDB.read();
-    console.log(valid);
+    logger.info('Getting valid message from socket %s', valid);
  
     io.sockets.emit('messages', messages)
   })
@@ -322,23 +341,9 @@ io.on('connection', socket => {
 })
 
 
-
-/*
-const server = httpServer.listen(PORT, ()=>{
-  console.log(`HTTP Server listening on port: ${server.address().port}`)
-  if (inspect(process.argv[2]))
-    FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
-  if (inspect(process.argv[3]))
-    FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
-})
-
-server.on('error', error => {
-  console.log(error.message)
-})*/
-
 //Process
 process.on('exit', (code)=>{
-  console.log('About to exit with code: ', code);
+  logger.warn('About to exit with code: %s', code);
 })
 
 
@@ -350,32 +355,32 @@ let START_MODE = 'FORK';
 if (inspect(process.argv[3]))
 {  
   let arg3 = inspect(process.argv[3]);
-  console.log('Parámetro 2: ',inspect(process.argv[2]));
-  console.log('Parámetro 3: ',inspect(process.argv[3]));
-  console.log('Parámetro 4: ',inspect(process.argv[4]));
-  console.log(arg3);
+  logger.warn('Parámetro 2: %s',inspect(process.argv[2]));
+  logger.warn('Parámetro 3: %s',inspect(process.argv[3]));
+  logger.warn('Parámetro 4: %s',inspect(process.argv[4]));
+
   if (arg3 === "'CLUSTER'" || arg3 === "CLUSTER")
   {
-    console.log('es cluster');
+    logger.info('It is Cluster');
     START_MODE = 'CLUSTER';
   }
-  console.log(START_MODE);
+  logger.info('Start Mode %s',START_MODE);
   
 }
 
 switch(START_MODE) {
   case ('CLUSTER'):
-    console.log('MODO CLUSTER');
+    logger.info('MODO CLUSTER');
     /* --------------------------------------------------------------------------- */
     /* MASTER */
     if (cluster.isMaster) {
-      console.log(numCPUs)
-      console.log(`PID MASTER ${process.pid}`)
+      logger.info('numero de núcleos: %s',numCPUs)
+      logger.info('PID MASTER: %s',process.pid)
       for (let i = 0; i < numCPUs; i++) {
         cluster.fork()
       }
       cluster.on('exit', worker => {
-        console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
+        logger.info('Worker: %s, died: %s', worker.process.pid, new Date().toLocaleString())
         cluster.fork()
       })
     }
@@ -384,7 +389,7 @@ switch(START_MODE) {
     else {
       app.listen(PORT, err => {
         if (!err){
-          console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
+          logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
           if (inspect(process.argv[4]))
             FACEBOOK_CLIENT_ID = inspect(process.argv[4]);
           if (inspect(process.argv[5]))
@@ -397,10 +402,10 @@ switch(START_MODE) {
 
   default: //FORK
     //Server connection start
-    console.log('MODO FORK');
+    logger.info('MODO FORK');
     app.listen(PORT, err => {
       if (!err){
-        console.log(`Servidor express escuchando en el puerto ${PORT} - PID WORKER ${process.pid}`)
+        logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
         if (inspect(process.argv[4]))
           FACEBOOK_CLIENT_ID = inspect(process.argv[5]);
         if (inspect(process.argv[4]))

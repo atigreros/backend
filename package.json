@@ -8,7 +8,7 @@
     "start": "node .",
     "prod": "forever start ./src/server.js",
     "pm2fork": "pm2 start ./src/server.js  --name=\"Server1\" --watch --node-args=\"./src/server.js 8081 FORK\"",
-    "pm2cluster": "pm2 start ./src/server.js --name=\"Server2\" --watch -i max --node-args=\"./src/server.js 8082 CLUSTER\"" 
+    "pm2cluster": "pm2 start ./src/server.js --name=\"Server2\" --watch -i max --node-args=\"./src/server.js 8082 CLUSTER\""
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0",
+    "pino": "^6.12.0",
     "socket.io": "^4.0.1",
     "sqlite3": "^5.0.2"
   }
