@@ -2000,3 +2000,51 @@
 {"level":30,"time":1626651262244,"pid":15444,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
 {"level":30,"time":1626651262245,"pid":13660,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 13660"}
 {"level":30,"time":1626651262247,"pid":15444,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 15444"}
+{"level":40,"time":1626652705850,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705851,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705851,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705851,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705851,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705851,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626652705851,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705852,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705852,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705852,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705852,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705852,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626652705852,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705853,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705853,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705853,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705853,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705854,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626652705854,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705855,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705855,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705855,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705855,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705855,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626652705856,"pid":6976,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 6976"}
+{"level":30,"time":1626652705857,"pid":2524,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 2524"}
+{"level":30,"time":1626652705859,"pid":16380,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 16380"}
+{"level":40,"time":1626652705858,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705859,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705859,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705859,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705859,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705859,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626652705859,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626652705860,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'FORK'"}
+{"level":40,"time":1626652705860,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainerFork.js'"}
+{"level":30,"time":1626652705860,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1626652705860,"pid":18108,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 18108"}
+{"level":30,"time":1626652705860,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1626652705863,"pid":9828,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 9828"}
+{"level":30,"time":1626652705865,"pid":12432,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 12432"}
+{"level":40,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8082'"}
+{"level":40,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: 'C:\\\\Users\\\\Aleja\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\pm2\\\\lib\\\\ProcessContainer.js'"}
+{"level":30,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626652705874,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626652705878,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 18304"}
