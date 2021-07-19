@@ -7,10 +7,10 @@ npm i
 configuración de Nginx, ver archivo anexo nginx.conf en ./nginx
 
 Prender el servidor en modo FORK
-npm pm2fork
+npm run pm2fork
 
 Prender el servidor en modo CLUSTER
-npm pm2cluster
+npm run pm2cluster
 
 
 Anteriores:

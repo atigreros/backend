@@ -7,12 +7,13 @@ function buildProdLogger() {
 }
 
 function buildDevLogger() {
-  const devLogger = pino()
+  const devLogger = pino('devlogger.log')
   devLogger.level = 'info'
   return devLogger
 }
 
 let logger = null
+//console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'PROD') {
   logger = buildProdLogger()
@@ -20,4 +21,5 @@ if (process.env.NODE_ENV === 'PROD') {
   logger = buildDevLogger()
 }
 
-module.exports = logger
+//module.exports = logger
+export {  logger }

@@ -2,7 +2,7 @@ import express from 'express'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
-import logger from './logger.js'
+import {logger as logger} from './logger.js'
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -106,8 +106,6 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
-
-
 
 
 
@@ -229,7 +227,7 @@ app.get('/info', async (req, res) => {
 })
 
 //with compression
-app.get('/infozip', compression(), (req, res) => {
+app.get('/infozip', compression(), async (req, res) => {
   res.render('info', {
     argv2: inspect(process.argv[2]),
     argv3: inspect(process.argv[3]),
@@ -246,33 +244,6 @@ app.get('/infozip', compression(), (req, res) => {
   });
 })
 
-//randoms
-/*app.get('/randoms', async (req, res) => {
-    let quantity=100000000;
-    if (req.query.cant) {
-      quantity = req.query.cant;
-    }
-    const child = fork('../backend/src/child.js', [quantity]);
-    console.log(child);
-    res.render('randoms', {cant: quantity});
-
-    // child.on('exit', function() {
-    //   res.render('randoms', {cant: 352});
-    // })
-})*/
-
-
-/*app.get('/rnd', (req, res) => {
-  if (req.isAuthenticated()) {
-      req.user.counter = req.user.counter = 0 || req.user.counter++;
-      const cant = Number(req.query.cant) || config.random_numbers;
-      const forked = fork('./helper/random.js');
-      forked.on('message', numbers => {
-          res.json(numbers);
-      })
-      forked.send(cant);
-  }
-});*/
 
 app.get('/randoms', (req, res) => {
   const quantity= Number(req.query.cant) || maxQtyRandom;
@@ -354,6 +325,7 @@ let START_MODE = 'FORK';
 
 if (inspect(process.argv[3]))
 {  
+
   let arg3 = inspect(process.argv[3]);
   logger.warn('Parámetro 2: %s',inspect(process.argv[2]));
   logger.warn('Parámetro 3: %s',inspect(process.argv[3]));
