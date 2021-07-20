@@ -4,16 +4,16 @@ import { Server as IOServer } from 'socket.io'
 import Products from './controllers/products.js'
 import {logger as logger} from './src/logger.js'
 
-import MessageMongoDB from './controllers/messagesMongoDb.js'
+import MessageMongoDB from './controllers/messagesMongoDB.js'
 import ProductsDB from './controllers/productsDB.js'
-import ProductsMongoDB from './controllers/productsMongoDb.js'
+import ProductsMongoDB from './controllers/productsMongoDB.js'
 import { 
   mongodbRemote as configmongodbRemote, 
   mongodbLocal as configmongodbLocal,
   mysql as configMysql,
   maxQuantityRandom as maxQtyRandom
 } from './controllers/config.js'
-import UserMongoDB from './controllers/usersMongoDb.js'
+import UserMongoDB from './controllers/usersMongoDB.js'
 import ProductsFirebase from './controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
