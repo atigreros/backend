@@ -31,8 +31,8 @@ import compression  from  'compression'
 
 //**************VARIABLES*****************
 let productsDB;
-let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
-let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+//let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+//let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 
 //**************CONSTANTS*****************
 //const PORT = 8081;
