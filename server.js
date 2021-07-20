@@ -42,7 +42,7 @@ const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const messages = []
 const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
-const persistence = 0;
+const persistence = 6;
 const FacebookStrategy = facebookStrategy.Strategy;
 const numCPUs = CPUs.cpus().length;
 //DATABASE
