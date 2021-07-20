@@ -358,7 +358,7 @@ switch(START_MODE) {
     /* --------------------------------------------------------------------------- */
     /* WORKERS */
     else {
-      app.listen(PORT, err => {
+      app.listen(process.env.PORT || PORT, err => {
         if (!err){
           logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
           if (inspect(process.argv[4]))
@@ -374,7 +374,7 @@ switch(START_MODE) {
   default: //FORK
     //Server connection start
     logger.info('MODO FORK');
-    app.listen(PORT, err => {
+    app.listen(process.env.PORT || PORT, err => {
       if (!err){
         logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
         if (inspect(process.argv[4]))
