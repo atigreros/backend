@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node .",
+    "start": "node server.js",
     "prod": "forever start ./src/server.js",
     "pm2fork": "pm2 start ./src/server.js  --name=\"Server1\" --watch --node-args=\"./src/server.js 8081 FORK\"",
     "pm2cluster": "pm2 start ./src/server.js --name=\"Server2\" --watch -i max --node-args=\"./src/server.js 8082 CLUSTER\""
