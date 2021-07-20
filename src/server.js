@@ -175,7 +175,6 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-//app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
 
 app.get('/faillogin', (req, res) => {
   res.render('login-error', {});
@@ -247,18 +246,13 @@ app.get('/infozip', compression(), async (req, res) => {
 
 app.get('/randoms', (req, res) => {
   const quantity= Number(req.query.cant) || maxQtyRandom;
-  /*if (req.query.cant)
-    quantity = req.query.cant;*/
-  
   const forked = fork('./src/child.js');//, [quantity]);
-  //forked.send(quantity);
+
   logger.info('start Randoms');
   
   setTimeout(() => {
          forked.send(quantity);
      }, 100);
-
-
 
   forked.on('message', ({quantity, numbers})=>{
     //console.log(`child_process exited with code ${code}`);
@@ -267,6 +261,11 @@ app.get('/randoms', (req, res) => {
   });
 
 });
+
+//Heroku test
+app.get('/mensaje',(req,res)=>{
+  res.send('Hola Node.js desde Heroku')
+})
 
 
 /* --------- LOGOUT ---------- */
