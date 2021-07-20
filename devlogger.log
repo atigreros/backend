@@ -2048,3 +2048,91 @@
 {"level":30,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
 {"level":30,"time":1626652705874,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
 {"level":30,"time":1626652705878,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 18304"}
+{"level":40,"time":1626657611812,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657611813,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'FORK'"}
+{"level":40,"time":1626657611813,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657611813,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1626657611813,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1626657611815,"pid":7160,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 7160"}
+{"level":40,"time":1626657833075,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"numero de núcleos: 8"}
+{"level":30,"time":1626657833076,"pid":3044,"hostname":"LAPTOP-FS9B6MTU","msg":"PID MASTER: 3044"}
+{"level":40,"time":1626657834758,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834759,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834759,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834759,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834759,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834760,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626657834763,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834763,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834764,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834764,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834764,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834764,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626657834766,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834767,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834767,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834767,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834767,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834767,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657834769,"pid":1204,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 1204"}
+{"level":30,"time":1626657834773,"pid":12840,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 12840"}
+{"level":30,"time":1626657834775,"pid":8340,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 8340"}
+{"level":40,"time":1626657834786,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834786,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834786,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834787,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834787,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834787,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657834795,"pid":6628,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 6628"}
+{"level":40,"time":1626657834813,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834814,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834814,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834814,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834814,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834814,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":40,"time":1626657834817,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834818,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834818,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834818,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834818,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834818,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657834819,"pid":8836,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 8836"}
+{"level":40,"time":1626657834822,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834822,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834822,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834822,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834823,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834823,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657834823,"pid":11820,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 11820"}
+{"level":30,"time":1626657834827,"pid":3112,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 3112"}
+{"level":40,"time":1626657834834,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1626657834835,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'CLUSTER'"}
+{"level":40,"time":1626657834835,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626657834835,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"It is Cluster"}
+{"level":30,"time":1626657834835,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
+{"level":30,"time":1626657834835,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
+{"level":30,"time":1626657834839,"pid":9996,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 9996"}
+{"level":40,"time":1626805177428,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1626805177429,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1626805177429,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626805177429,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1626805177429,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1626805177431,"pid":13092,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 13092"}
+{"level":40,"time":1626806932296,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1626806932297,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1626806932297,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626806932297,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1626806932297,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1626806932298,"pid":8000,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 8000"}
+{"level":40,"time":1626809419490,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1626809419490,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1626809419490,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1626809419490,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1626809419490,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1626809419492,"pid":12456,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 12456"}

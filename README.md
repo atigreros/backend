@@ -4,17 +4,24 @@ backend class
 ejecutar:
 npm i
 
-configuración de Nginx, ver archivo anexo nginx.conf en ./nginx
-
-Prender el servidor en modo FORK
-npm run pm2fork
-
-Prender el servidor en modo CLUSTER
-npm run pm2cluster
-
-
-Anteriores:
+Para este desafio ejecutar
 ejecutar:
-npm start FACEBOOK_CLIENT_ID FACEBOOK_CLIENT_SECRET MODO
+1. npm start 8081 FORK FACEBOOK_CLIENT_ID FACEBOOK_CLIENT_SECRET 
+en otra terminal artillery:
+artillery quick --count 50 -n 20 http://localhost:8081/info > result_fork.txt
 
-MODO puede ser CLUSTER o FORK
+
+2. npm start 8081 CLUSTER FACEBOOK_CLIENT_ID FACEBOOK_CLIENT_SECRET 
+en otra terminal artillery:
+artillery quick --count 50 -n 20 http://localhost:8081/info > result_cluster.txt
+
+3. node --prof ./src/server.js
+en otra terminal artillery:
+artillery quick --count 50 -n 20 http://localhost:8080/infobloq > result_bloq.txt
+artillery quick --count 50 -n 20 http://localhost:8080/info > result_nobloq.txt
+
+4. npm start0x
+en otra terminal
+npm test
+
+

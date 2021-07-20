@@ -226,6 +226,34 @@ app.get('/info', async (req, res) => {
   });
 })
 
+//info
+app.get('/infobloq', async (req, res) => {
+
+  console.log("Este proceso es bloqueante argv1....");
+  console.log("Este proceso es bloqueante argv2....");
+  console.log("Este proceso es bloqueante argv3....");
+  console.log("Este proceso es bloqueante argv4....");
+  console.log("Este proceso es bloqueante argv5....");
+  console.log("Este proceso es bloqueante argv6....");
+
+  res.render('info', {
+    argv2: inspect(process.argv[2]),
+    argv3: inspect(process.argv[3]),
+    argv4: inspect(process.argv[4]),
+    argv5: inspect(process.argv[5]),
+    argv6: inspect(process.argv[6]),
+    platfName: inspect(process.platform),
+    verNode: inspect(process.version),
+    memUse: inspect(process.memoryUsage()),
+    pathExec: inspect(process.cwd()),
+    procId: inspect(process.pid),
+    currentDir: inspect(process.argv[0]),
+    numProcess: numCPUs
+  });
+  
+
+})
+
 //with compression
 app.get('/infozip', compression(), async (req, res) => {
   res.render('info', {

@@ -1,11 +1,13 @@
 {
   "type": "module",
-  "name": "desafio31",
+  "name": "desafio32",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
   "scripts": {
     "start": "node .",
+    "start0x": "0x .",
+    "test": "node ./src/benchmark.js",
     "prod": "forever start ./src/server.js",
     "pm2fork": "pm2 start ./src/server.js  --name=\"Server1\" --watch --node-args=\"./src/server.js 8081 FORK\"",
     "pm2cluster": "pm2 start ./src/server.js --name=\"Server2\" --watch -i max --node-args=\"./src/server.js 8082 CLUSTER\""
@@ -14,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autocannon": "^7.4.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
