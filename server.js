@@ -1,20 +1,20 @@
 import express from 'express'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
-import Products from '../controllers/products.js'
-import {logger as logger} from './logger.js'
+import Products from './controllers/products.js'
+import {logger as logger} from './src/logger.js'
 
-import MessageMongoDB from '../controllers/messagesMongoDb.js'
-import ProductsDB from '../controllers/productsDB.js'
-import ProductsMongoDB from '../controllers/productsMongoDb.js'
+import MessageMongoDB from './controllers/messagesMongoDb.js'
+import ProductsDB from './controllers/productsDB.js'
+import ProductsMongoDB from './controllers/productsMongoDb.js'
 import { 
   mongodbRemote as configmongodbRemote, 
   mongodbLocal as configmongodbLocal,
   mysql as configMysql,
   maxQuantityRandom as maxQtyRandom
-} from '../controllers/config.js'
-import UserMongoDB from '../controllers/usersMongoDb.js'
-import ProductsFirebase from '../controllers/productsFirebase.js'
+} from './controllers/config.js'
+import UserMongoDB from './controllers/usersMongoDb.js'
+import ProductsFirebase from './controllers/productsFirebase.js'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
@@ -133,7 +133,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 //Se comenta esta linea, pues será nginx quien se encargará de ofrecer los recursos estáticos
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 //express rendering
 //app.use('/', createProductsRouter())

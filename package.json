@@ -3,7 +3,7 @@
   "name": "desafio33",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node .",
     "prod": "forever start ./src/server.js",
