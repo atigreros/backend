@@ -1,20 +1,19 @@
 # backend
 backend class
 
-ejecutar:
-npm i
+execute:
+1. npm i
 
-configuración de Nginx, ver archivo anexo nginx.conf en ./nginx
+2. Set sendmail.js file with user and pass for ethereal (just setted)
 
-Prender el servidor en modo FORK
-npm run pm2fork
+3. Set sendsms.js file with  acctSid and authToken
 
-Prender el servidor en modo CLUSTER
-npm run pm2cluster
+4. npm start
 
+5. login with facebook
 
-Anteriores:
-ejecutar:
-npm start FACEBOOK_CLIENT_ID FACEBOOK_CLIENT_SECRET MODO
+6. Check ethereal mail
 
-MODO puede ser CLUSTER o FORK
+7. Send message with "administrador" text
+
+8. Check cellphone sms

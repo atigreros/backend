@@ -2048,3 +2048,333 @@
 {"level":30,"time":1626652705873,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode CLUSTER"}
 {"level":30,"time":1626652705874,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO CLUSTER"}
 {"level":30,"time":1626652705878,"pid":18304,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8082, PID WORKER: 18304"}
+{"level":40,"time":1627244941422,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627244941423,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627244941423,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627244941423,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627244941423,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627244941425,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 17068"}
+{"level":30,"time":1627244949617,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627244992846,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627246262510,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627246703977,"pid":17068,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627246805221,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627246805221,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627246805221,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627246805221,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627246805221,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627246805223,"pid":16940,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 16940"}
+{"level":40,"time":1627246893658,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627246893658,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627246893658,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627246893658,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627246893658,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627246893660,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 15692"}
+{"level":30,"time":1627246930649,"pid":15692,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627247259123,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627247259124,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627247259124,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627247259124,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627247259124,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627247259126,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 10968"}
+{"level":30,"time":1627247263987,"pid":10968,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627247365177,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627247365177,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627247365177,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627247365177,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627247365177,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627247365179,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 15808"}
+{"level":30,"time":1627247370717,"pid":15808,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627249815596,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627249815597,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627249815597,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627249815597,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627249815597,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627249815599,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 5284"}
+{"level":30,"time":1627249847454,"pid":5284,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627250013309,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1627250013310,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'FORK'"}
+{"level":40,"time":1627250013310,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627250013310,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627250013310,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627250013311,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 9764"}
+{"level":30,"time":1627250026735,"pid":9764,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627250122402,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: '8081'"}
+{"level":40,"time":1627250122402,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: 'FORK'"}
+{"level":40,"time":1627250122402,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627250122402,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627250122402,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627250122404,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8081, PID WORKER: 2956"}
+{"level":30,"time":1627250136517,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250140724,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250140739,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250228756,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250231587,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250231595,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250238162,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250240743,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250240751,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250244627,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250247436,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250247444,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250250672,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250255934,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250255943,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250262044,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250287238,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250287247,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250294248,"pid":2956,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627250715873,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627250715873,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627250715873,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627250715873,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627250715873,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627250715876,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 13288"}
+{"level":30,"time":1627250747593,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250777619,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250777633,"pid":13288,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627250856807,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627250856808,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627250856808,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627250856808,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627250856808,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627250856811,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 16080"}
+{"level":30,"time":1627250866206,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627250869476,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627250869489,"pid":16080,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627251245174,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627251245175,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627251245175,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627251245175,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627251245175,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627251245177,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 11364"}
+{"level":30,"time":1627251259714,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627251262317,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627251262331,"pid":11364,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627251553961,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627251553962,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627251553962,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627251553962,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627251553962,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627251553964,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 8784"}
+{"level":30,"time":1627251572050,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627251574518,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627251574534,"pid":8784,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627255745035,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627255745035,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627255745036,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627255745036,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627255745036,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627255745037,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 14932"}
+{"level":30,"time":1627255795474,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627255802171,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627255802181,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627255804028,"pid":14932,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627256232034,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627256232034,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627256232034,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627256232034,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627256232034,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627256232036,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 11012"}
+{"level":30,"time":1627256395729,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627256398970,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627256398981,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627256400747,"pid":11012,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627256424530,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627256424530,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627256424530,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627256424530,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627256424530,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627256424532,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 2472"}
+{"level":30,"time":1627256428667,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627256431826,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627256431836,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627256433383,"pid":2472,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627256523631,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627256523631,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627256523631,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627256523631,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627256523631,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627256523633,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 13080"}
+{"level":30,"time":1627256528169,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627256530653,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627256530663,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627256532199,"pid":13080,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627256602463,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627256602464,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627256602464,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627256602464,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627256602464,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627256602466,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 4380"}
+{"level":30,"time":1627256608286,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627256610706,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627256610713,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627256612470,"pid":4380,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627258448410,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627258448410,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627258448410,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627258448410,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627258448410,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627258448412,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 1880"}
+{"level":30,"time":1627258456005,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627258459807,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627258459816,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627258461501,"pid":1880,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627258484716,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627258484717,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627258484717,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627258484717,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627258484717,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627258484719,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 6392"}
+{"level":30,"time":1627258489580,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627258492016,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627258492024,"pid":6392,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627258652662,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627258652662,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627258652662,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627258652662,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627258652663,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627258652664,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 9724"}
+{"level":30,"time":1627258656685,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627258660163,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627258660173,"pid":9724,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627258952772,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627258952772,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627258952773,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627258952773,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627258952773,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627258952774,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 2996"}
+{"level":30,"time":1627258961910,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627258966636,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627258966647,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627259021395,"pid":2996,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627261255311,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627261255312,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627261255312,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627261255312,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627261255312,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627261255314,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 9292"}
+{"level":30,"time":1627261269080,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627261272544,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627261272557,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627261424489,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627261424497,"pid":9292,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627261603951,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627261603951,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627261603951,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627261603951,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627261603951,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627261603953,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 17820"}
+{"level":30,"time":1627261607210,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627261613655,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627261613667,"pid":17820,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627262524520,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627262524521,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627262524521,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627262524521,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627262524521,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627262524522,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 13340"}
+{"level":30,"time":1627262529673,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627262532645,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627262532656,"pid":13340,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627262653438,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627262653439,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627262653439,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627262653439,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627262653439,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627262653441,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 17752"}
+{"level":30,"time":1627262658159,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627262660835,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627262660847,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627264302664,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627264302673,"pid":17752,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627264555271,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627264555272,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627264555272,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627264555272,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627264555272,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627264555274,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Servidor express escuchando en el puerto: 8080, PID WORKER: 1508"}
+{"level":30,"time":1627264565569,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627264571006,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627264571018,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627264804269,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627264804277,"pid":1508,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627265963543,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627265963543,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627265963543,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627265963543,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627265963543,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627265983085,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627265985633,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627265985643,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627266044858,"pid":244,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627266773777,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627266773777,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627266773778,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627266773778,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627266773778,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"MODO FORK"}
+{"level":30,"time":1627266785993,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627266788890,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627266788902,"pid":17212,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627267393996,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627267393996,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627267393996,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627267393996,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627267399670,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627267402559,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627267402571,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":40,"time":1627267416647,"pid":8344,"hostname":"LAPTOP-FS9B6MTU","msg":"About to exit with code: 1"}
+{"level":40,"time":1627267475537,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627267475538,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627267475539,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627267475539,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627267480252,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627267483126,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627267483137,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627267544560,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627267544600,"pid":7736,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n}"}
+{"level":40,"time":1627342051108,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627342051117,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627342051117,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627342051117,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627342061604,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342065733,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627342065742,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342098711,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627342098755,"pid":3004,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 56,\n    nickName: 'omail',\n    avatar: 'avatar'\n  },\n  _id: 60fe21d8564a291e382f5a7c,\n  text: 'hello',\n  __v: 0\n}"}
+{"level":40,"time":1627342507639,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627342507639,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627342507639,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627342507639,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627342517034,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342519209,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627342519219,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342573483,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627342573533,"pid":15280,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 56,\n    nickName: 'omail',\n    avatar: 'avatar'\n  },\n  _id: 60fe21d8564a291e382f5a7c,\n  text: 'hello',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'tengo',\n    lastName: 'mail',\n    age: 54,\n    nickName: 'yotengo',\n    avatar: 'avatar'\n  },\n  _id: 60ff45120a245f0bbc4b3444,\n  text: 'administrador',\n  __v: 0\n}"}
+{"level":40,"time":1627342829572,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627342829573,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627342829573,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627342829573,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627342829650,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342832320,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627342832331,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627342881337,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627342881397,"pid":17944,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 56,\n    nickName: 'omail',\n    avatar: 'avatar'\n  },\n  _id: 60fe21d8564a291e382f5a7c,\n  text: 'hello',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'tengo',\n    lastName: 'mail',\n    age: 54,\n    nickName: 'yotengo',\n    avatar: 'avatar'\n  },\n  _id: 60ff45120a245f0bbc4b3444,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@puedo.com',\n    name: 'yo',\n    lastName: 'puedo',\n    age: 23,\n    nickName: 'puedo',\n    avatar: 'avatar'\n  },\n  _id: 60ff46eddb80673bb04ab874,\n  text: 'administrador',\n  __v: 0\n}"}
+{"level":40,"time":1627344313327,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627344313329,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627344313329,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627344313329,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627344322045,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627344325979,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627344325990,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627344359792,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627344359853,"pid":9288,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 56,\n    nickName: 'omail',\n    avatar: 'avatar'\n  },\n  _id: 60fe21d8564a291e382f5a7c,\n  text: 'hello',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'tengo',\n    lastName: 'mail',\n    age: 54,\n    nickName: 'yotengo',\n    avatar: 'avatar'\n  },\n  _id: 60ff45120a245f0bbc4b3444,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@puedo.com',\n    name: 'yo',\n    lastName: 'puedo',\n    age: 23,\n    nickName: 'puedo',\n    avatar: 'avatar'\n  },\n  _id: 60ff46eddb80673bb04ab874,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'tigre',\n    avatar: 'mono'\n  },\n  _id: 60ff4821b7b0774618fdaadb,\n  text: 'administrador',\n  __v: 0\n}"}
+{"level":40,"time":1627344772806,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 2: undefined"}
+{"level":40,"time":1627344772806,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 3: undefined"}
+{"level":40,"time":1627344772807,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Parámetro 4: undefined"}
+{"level":30,"time":1627344772807,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Start Mode FORK"}
+{"level":30,"time":1627344781203,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627344784979,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Facebook User Profile [object Object]"}
+{"level":30,"time":1627344784990,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Passing by get /"}
+{"level":30,"time":1627344830595,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting message from socket [object Object]"}
+{"level":30,"time":1627344830645,"pid":10512,"hostname":"LAPTOP-FS9B6MTU","msg":"Getting valid message from socket {\n  author: {\n    id: 'd@coco',\n    name: 'coco',\n    lastName: 'chanel',\n    age: 59,\n    nickName: 'cocoa',\n    avatar: 'http://coquito.com'\n  },\n  _id: 60c6b2c81e9e77328c2cbf4f,\n  text: 'mensaje del coco',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b986f1b25e1fb4b0d237,\n  text: 'hágale pues',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6b9c6f1b25e1fb4b0d238,\n  text: 'siga escribiendo a ver que sale',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6becb90d84b3614f2fa29,\n  text: 'otro pues pa que pruebe',\n  __v: 0\n},{\n  author: {\n    id: 'cuando@pueda',\n    name: 'cuando',\n    lastName: 'pueda',\n    age: 34,\n    nickName: 'desespero',\n    avatar: 'http://sipuede.com'\n  },\n  _id: 60c6c04b7c42ca5da498d6f4,\n  text: 'y otra vez',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d3491a54611d08e40527,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d34e1a54611d08e40528,\n  text: 'estoy probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d507a187f03c30057ecf,\n  text: 'probando',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7d52b87d62a2bec75eaea,\n  text: 'nuevaprueba',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc234b119e2cd8eb65fa,\n  text: 'desafio',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dc264b119e2cd8eb65fb,\n  text: 'para hacerlo ya',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dccb2a3f233f70652bfd,\n  text: 'local y legal',\n  __v: 0\n},{\n  author: {\n    id: 'gordis@prueba',\n    name: 'gordis',\n    lastName: 'prueba',\n    age: 34,\n    nickName: 'elgordis',\n    avatar: 'http:elgordis.com'\n  },\n  _id: 60c7dcd02a3f233f70652bfe,\n  text: 'localísimo',\n  __v: 0\n},{\n  author: {\n    id: '1@estoy',\n    name: 'uno',\n    lastName: 'estoy',\n    age: 23,\n    nickName: 'noestoy',\n    avatar: 'http://avatarbonito'\n  },\n  _id: 60c7ffc0ab0ae154146e8682,\n  text: 'intentando de nuevo',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'dfa',\n    avatar: 'avatar'\n  },\n  _id: 60fe1d51eada1826803ae640,\n  text: 'buenas',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 56,\n    nickName: 'omail',\n    avatar: 'avatar'\n  },\n  _id: 60fe21d8564a291e382f5a7c,\n  text: 'hello',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'tengo',\n    lastName: 'mail',\n    age: 54,\n    nickName: 'yotengo',\n    avatar: 'avatar'\n  },\n  _id: 60ff45120a245f0bbc4b3444,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@puedo.com',\n    name: 'yo',\n    lastName: 'puedo',\n    age: 23,\n    nickName: 'puedo',\n    avatar: 'avatar'\n  },\n  _id: 60ff46eddb80673bb04ab874,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 34,\n    nickName: 'tigre',\n    avatar: 'mono'\n  },\n  _id: 60ff4821b7b0774618fdaadb,\n  text: 'administrador',\n  __v: 0\n},{\n  author: {\n    id: 'yo@mail.com',\n    name: 'yo',\n    lastName: 'mail',\n    age: 23,\n    nickName: 'buenas',\n    avatar: 'murcielago'\n  },\n  _id: 60ff4de7fc5dac2448950d2c,\n  text: 'tiene un administrador',\n  __v: 0\n}"}

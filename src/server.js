@@ -1,8 +1,11 @@
 import express from 'express'
+import { createProductsRouter } from '../routers/productsRouter.js'
 import {Server as HttpServer} from 'http'
 import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 import {logger as logger} from './logger.js'
+import {mailethereal as sendMail} from './sendmail.js' //mailing
+import {twilioClient as twilioClient} from './sendsms.js' //messaging
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -29,10 +32,12 @@ import cluster from 'cluster'
 import CPUs from 'os'
 import compression  from  'compression'
 
+
 //**************VARIABLES*****************
 let productsDB;
 let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+
 
 //**************CONSTANTS*****************
 //const PORT = 8081;
@@ -47,8 +52,6 @@ const FacebookStrategy = facebookStrategy.Strategy;
 const numCPUs = CPUs.cpus().length;
 //DATABASE
 const users = [];
-
-
 
 
 //**************Select Database**************
@@ -133,10 +136,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 //Se comenta esta linea, pues será nginx quien se encargará de ofrecer los recursos estáticos
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 //express rendering
-//app.use('/', createProductsRouter())
+app.use('/', createProductsRouter())
 
 
 /* --------------------- AUTH --------------------------- */
@@ -190,11 +193,24 @@ app.get('/data', async (req, res) => {
       req.user.contador++
       const prod = await productsDB.read();
 
+      //BEGIN: EMAILING AND MESSAGING
+      const cuentaDePrueba = req.user.emails[0].value
+      const asunto = 'Login'
+      const mensajeHtml = `Usuario que ingresa: ${req.user.displayName}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
+
+      const info = await sendMail({
+        to: cuentaDePrueba,
+        subject: asunto,
+        html: mensajeHtml
+      })
+
+      console.log(info)
+      //END: EMAILING AND MESSAGING
+  
       res.render('guardarSocket', {
         products: prod,
         user: req.user,
         contador: req.user.contador
-
       });
   }
   else {
@@ -206,6 +222,7 @@ app.get('/datos', (req,res) =>  {
   logger.info('Data information port: %s, date(Fyh): %s', PORT, Date.now())
   //console.log('port:', PORT, 'Fyh:', Date.now());
   res.send(`Servidor express (NGINX) en ${PORT} <b>PID ${process.pid}<b> - ${new Date().toLocaleDateString()}`);
+
 })
 
 //info
@@ -272,6 +289,21 @@ app.get('/randoms', (req, res) => {
 /* --------- LOGOUT ---------- */
 app.get('/logout', async (req, res) => {
   let lastUser = req.user;
+
+  //BEGIN: EMAILING AND MESSAGING
+  const cuentaDePrueba = lastUser.emails[0].value
+  const asunto = 'Logout'
+  const mensajeHtml = `Usuario que sale: ${lastUser.displayName}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
+
+  const info = await sendMail({
+    to: cuentaDePrueba,
+    subject: asunto,
+    html: mensajeHtml
+  })
+
+  console.log(info)
+  //END: EMAILING AND MESSAGING
+
   req.logout();
   res.render('logout', {user: lastUser});
 })
@@ -279,27 +311,38 @@ app.get('/logout', async (req, res) => {
 
 //socket connection
 io.on('connection', socket => {
-  logger.warn('New user connected!')
+  console.log('New user connected!')
   socket.emit('messages', messages)
 
 
   //When click insert from user
   socket.on('boton', async function(newProduct) { 
-    logger.info('Click del usuario');
+    console.log('Click del usuario');
     //const prod = products.add(newProduct);
     //console.log(newProduct);
 
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();
-    logger.info(valid);
+    console.log(valid);
 
     io.sockets.emit('productsToClient', newProduct);
   })
 
   //When chat send message
   socket.on('messages', async function(data) { 
-
     messages.push(data);
+
+    const from = '+13236415819'
+    const to = '+573012235214'
+    let body = '';
+
+    if (data.text.includes('administrador')){
+      body = `Mensaje:  ${data.text},  enviado por: ${data.name}`
+      const info = await twilioClient.messages.create({ body, from, to })
+      console.log(info);}
+      //console.log(body)}
+    else
+      console.log('envio otra vaina: ' + data.text);
    
     logger.info('Getting message from socket %s',data)
     await messageDB.add(data); 
@@ -310,6 +353,7 @@ io.on('connection', socket => {
   })
 
 })
+
 
 
 //Process
@@ -337,52 +381,61 @@ if (inspect(process.argv[3]))
     START_MODE = 'CLUSTER';
   }
   logger.info('Start Mode %s',START_MODE);
-  
 }
 
-switch(START_MODE) {
-  case ('CLUSTER'):
-    logger.info('MODO CLUSTER');
-    /* --------------------------------------------------------------------------- */
-    /* MASTER */
-    if (cluster.isMaster) {
-      logger.info('numero de núcleos: %s',numCPUs)
-      logger.info('PID MASTER: %s',process.pid)
-      for (let i = 0; i < numCPUs; i++) {
-        cluster.fork()
-      }
-      cluster.on('exit', worker => {
-        logger.info('Worker: %s, died: %s', worker.process.pid, new Date().toLocaleString())
-        cluster.fork()
-      })
-    }
-    /* --------------------------------------------------------------------------- */
-    /* WORKERS */
-    else {
-      app.listen(PORT, err => {
-        if (!err){
-          logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
-          if (inspect(process.argv[4]))
-            FACEBOOK_CLIENT_ID = inspect(process.argv[4]);
-          if (inspect(process.argv[5]))
-            FACEBOOK_CLIENT_SECRET = inspect(process.argv[5]);
-        }
-      })
-    }
 
-  break;
+//Server connection start
+const server = httpServer.listen(PORT, ()=>{
+  console.log(`HTTP Server listening on port: ${server.address().port}`)
+})
 
-  default: //FORK
-    //Server connection start
-    logger.info('MODO FORK');
-    app.listen(PORT, err => {
-      if (!err){
-        logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
-        if (inspect(process.argv[4]))
-          FACEBOOK_CLIENT_ID = inspect(process.argv[5]);
-        if (inspect(process.argv[4]))
-          FACEBOOK_CLIENT_SECRET = inspect(process.argv[5]);
-      }
-    })
-  break;
-}
+server.on('error', error => {
+  console.log(error.message)
+})
+
+// switch(START_MODE) {
+//   case ('CLUSTER'):
+//     logger.info('MODO CLUSTER');
+//     /* --------------------------------------------------------------------------- */
+//     /* MASTER */
+//     if (cluster.isMaster) {
+//       logger.info('numero de núcleos: %s',numCPUs)
+//       logger.info('PID MASTER: %s',process.pid)
+//       for (let i = 0; i < numCPUs; i++) {
+//         cluster.fork()
+//       }
+//       cluster.on('exit', worker => {
+//         logger.info('Worker: %s, died: %s', worker.process.pid, new Date().toLocaleString())
+//         cluster.fork()
+//       })
+//     }
+//     /* --------------------------------------------------------------------------- */
+//     /* WORKERS */
+//     else {
+//       app.listen(PORT, err => {
+//         if (!err){
+//           logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
+//           if (inspect(process.argv[2]))
+//             FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
+//           if (inspect(process.argv[3]))
+//             FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+//         }
+//       })
+//     }
+
+//   break;
+
+//   default: //FORK
+//     //Server connection start
+//     logger.info('MODO FORK');
+//     app.listen(PORT, err => {
+//       if (!err){
+//         console.log('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
+//         if (inspect(process.argv[2]))
+//           FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
+//         if (inspect(process.argv[3]))
+//           FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
+//       }
+//     })
+//   break;
+// }
