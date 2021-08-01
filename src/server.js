@@ -22,8 +22,12 @@ import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
 //**************PASSPORT*****************
+import bCrypt from 'bCrypt'
 import passport from 'passport'
-import facebookStrategy from 'passport-facebook'
+import LocalStrategy from 'passport-local'
+import { config } from 'process'
+
+//import facebookStrategy from 'passport-facebook'
 
 //**************PROCESS*****************
 import { inspect } from 'util'
@@ -48,7 +52,7 @@ const io = new IOServer(httpServer)
 const messages = []
 const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
 const persistence = 5;
-const FacebookStrategy = facebookStrategy.Strategy;
+//const FacebookStrategy = facebookStrategy.Strategy;
 const numCPUs = CPUs.cpus().length;
 //DATABASE
 const users = [];
@@ -86,30 +90,67 @@ switch(persistence) {
 }
 
 
-/* ------------------ PASSPORT FACEBOOK -------------------- */
-let FACEBOOK_CLIENT_ID = '332225778310685';
-let FACEBOOK_CLIENT_SECRET = 'a9bca61479654d390714ed2530db7a3d';
 
-passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_CLIENT_ID,
-    clientSecret: FACEBOOK_CLIENT_SECRET,
-    callbackURL: '/auth/facebook/callback',
-    profileFields: ['id', 'displayName', 'photos', 'emails'],
-    scope: ['email']
-}, function (accessToken, refreshToken, userProfile, done) {
-    logger.info('Facebook User Profile %s', userProfile)
-    //console.log(userProfile)
-    return done(null, userProfile);
+ /* ------------------ PASSPORT LOCAL-------------------- */
+
+ passport.use('register', new LocalStrategy({ passReqToCallback: true }, 
+  async (req, username, password, done) => {
+    //const { direccion } = req.body
+    //users = UserDB.read();
+    const usuario = await UserDB.readOne(username);
+    //const usuario = users.find(usuario => usuario.username == username)
+    console.log(usuario)
+    if (usuario) {
+      return done(null, false); //'already registered')
+    }
+
+    const user = {
+      username: username,
+      password: createHash(password),
+      email: req.body.email,
+      age: req.body.age,
+      address:req.body.address,
+      phone: req.body.phone,
+      avatar: req.body.avatar
+    }
+
+    console.log('Antes del add en mongo');
+    console.log(user);
+    UserDB.add(user)
+    //users.push(user)
+    console.log(user);
+
+    return done(null, user)
 }));
 
-passport.serializeUser(function (user, cb) {
-    cb(null, user);
+
+passport.use('login', new LocalStrategy( async (username, password, done) => {
+  const user = await UserDB.readOne(username);
+
+  if (!user) {
+    return done(null, false)
+  }
+
+  if (!isValidPassword(user, password)) {
+    return done(null, false)
+  }
+
+  user.contador = 0
+  console.log('login with user');
+  console.log(user);
+  return done(null, user);
+}));
+
+passport.serializeUser(function(user, done) {
+  console.log('serialize');
+  console.log(user);
+  done(null, user.username);
 });
 
-passport.deserializeUser(function (obj, cb) {
-    cb(null, obj);
+passport.deserializeUser(async function(username, done) {
+  const user = await UserDB.readOne(username)
+  done(null, user);
 });
-
 
 
 /* --------------------- MIDDLEWARE --------------------------- */
@@ -132,15 +173,12 @@ app.use(passport.session());
 app.set('view engine', 'ejs');
 app.set("views", "./views");
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
-//Se comenta esta linea, pues será nginx quien se encargará de ofrecer los recursos estáticos
-app.use(express.static('public'));
-
 //express rendering
 app.use('/', createProductsRouter())
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'));
 
 /* --------------------- AUTH --------------------------- */
 
@@ -154,6 +192,16 @@ function isAuth(req, res, next) {
 
 
 /* --------------------- ROUTES --------------------------- */
+// REGISTER
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+app.post('/register', passport.authenticate('register', { failureRedirect: '/failregister', successRedirect: '/' }))
+
+app.get('/failregister', (req, res) => {
+  res.render('register-error', {});
+})
 
 app.get('/', (req, res) => {
   logger.info("Passing by get /")
@@ -165,20 +213,11 @@ app.get('/', (req, res) => {
   }
 })
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: '/faillogin'
-}));
-
-
-// LOGIN
 app.get('/login', (req, res) => {
   res.render('login');
 });
 
-//app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
+app.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin', successRedirect: '/data' }))
 
 app.get('/faillogin', (req, res) => {
   res.render('login-error', {});
@@ -194,17 +233,19 @@ app.get('/data', async (req, res) => {
       const prod = await productsDB.read();
 
       //BEGIN: EMAILING AND MESSAGING
-      const cuentaDePrueba = req.user.emails[0].value
-      const asunto = 'Login'
-      const mensajeHtml = `Usuario que ingresa: ${req.user.displayName}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
+      if (req.user.email){
+        const cuentaDePrueba = req.user.email
+        const asunto = 'Login'
+        const mensajeHtml = `Usuario que ingresa: ${req.user.username}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
 
-      const info = await sendMail({
-        to: cuentaDePrueba,
-        subject: asunto,
-        html: mensajeHtml
-      })
+        const info = await sendMail({
+          to: cuentaDePrueba,
+          subject: asunto,
+          html: mensajeHtml
+        })
 
-      console.log(info)
+        console.log(info)
+      }
       //END: EMAILING AND MESSAGING
   
       res.render('guardarSocket', {
@@ -218,72 +259,6 @@ app.get('/data', async (req, res) => {
   }
 })
 
-app.get('/datos', (req,res) =>  {
-  logger.info('Data information port: %s, date(Fyh): %s', PORT, Date.now())
-  //console.log('port:', PORT, 'Fyh:', Date.now());
-  res.send(`Servidor express (NGINX) en ${PORT} <b>PID ${process.pid}<b> - ${new Date().toLocaleDateString()}`);
-
-})
-
-//info
-app.get('/info', async (req, res) => {
-  res.render('info', {
-    argv2: inspect(process.argv[2]),
-    argv3: inspect(process.argv[3]),
-    argv4: inspect(process.argv[4]),
-    argv5: inspect(process.argv[5]),
-    argv6: inspect(process.argv[6]),
-    platfName: inspect(process.platform),
-    verNode: inspect(process.version),
-    memUse: inspect(process.memoryUsage()),
-    pathExec: inspect(process.cwd()),
-    procId: inspect(process.pid),
-    currentDir: inspect(process.argv[0]),
-    numProcess: numCPUs
-  });
-})
-
-//with compression
-app.get('/infozip', compression(), async (req, res) => {
-  res.render('info', {
-    argv2: inspect(process.argv[2]),
-    argv3: inspect(process.argv[3]),
-    argv4: inspect(process.argv[4]),
-    argv5: inspect(process.argv[5]),
-    argv6: inspect(process.argv[6]),
-    platfName: inspect(process.platform),
-    verNode: inspect(process.version),
-    memUse: inspect(process.memoryUsage()),
-    pathExec: inspect(process.cwd()),
-    procId: inspect(process.pid),
-    currentDir: inspect(process.argv[0]),
-    numProcess: numCPUs
-  });
-})
-
-
-app.get('/randoms', (req, res) => {
-  const quantity= Number(req.query.cant) || maxQtyRandom;
-  /*if (req.query.cant)
-    quantity = req.query.cant;*/
-  
-  const forked = fork('./src/child.js');//, [quantity]);
-  //forked.send(quantity);
-  logger.info('start Randoms');
-  
-  setTimeout(() => {
-         forked.send(quantity);
-     }, 100);
-
-
-
-  forked.on('message', ({quantity, numbers})=>{
-    //console.log(`child_process exited with code ${code}`);
-    logger.warn('message from child %s', numbers);
-    res.render('randoms', {quantity: quantity, numbers: numbers});
-  });
-
-});
 
 
 /* --------- LOGOUT ---------- */
@@ -291,17 +266,19 @@ app.get('/logout', async (req, res) => {
   let lastUser = req.user;
 
   //BEGIN: EMAILING AND MESSAGING
-  const cuentaDePrueba = lastUser.emails[0].value
-  const asunto = 'Logout'
-  const mensajeHtml = `Usuario que sale: ${lastUser.displayName}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
+  if (req.user.email){
+    const cuentaDePrueba = lastUser.email
+    const asunto = 'Logout'
+    const mensajeHtml = `Usuario que sale: ${lastUser.username}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
 
-  const info = await sendMail({
-    to: cuentaDePrueba,
-    subject: asunto,
-    html: mensajeHtml
-  })
+    const info = await sendMail({
+      to: cuentaDePrueba,
+      subject: asunto,
+      html: mensajeHtml
+    })
 
-  console.log(info)
+    console.log(info)
+  }
   //END: EMAILING AND MESSAGING
 
   req.logout();
@@ -362,26 +339,6 @@ process.on('exit', (code)=>{
 })
 
 
-/**
- * Parámetros de entrada
- */
-let START_MODE = 'FORK';
-
-if (inspect(process.argv[3]))
-{  
-
-  let arg3 = inspect(process.argv[3]);
-  logger.warn('Parámetro 2: %s',inspect(process.argv[2]));
-  logger.warn('Parámetro 3: %s',inspect(process.argv[3]));
-  logger.warn('Parámetro 4: %s',inspect(process.argv[4]));
-
-  if (arg3 === "'CLUSTER'" || arg3 === "CLUSTER")
-  {
-    logger.info('It is Cluster');
-    START_MODE = 'CLUSTER';
-  }
-  logger.info('Start Mode %s',START_MODE);
-}
 
 
 //Server connection start
@@ -393,49 +350,12 @@ server.on('error', error => {
   console.log(error.message)
 })
 
-// switch(START_MODE) {
-//   case ('CLUSTER'):
-//     logger.info('MODO CLUSTER');
-//     /* --------------------------------------------------------------------------- */
-//     /* MASTER */
-//     if (cluster.isMaster) {
-//       logger.info('numero de núcleos: %s',numCPUs)
-//       logger.info('PID MASTER: %s',process.pid)
-//       for (let i = 0; i < numCPUs; i++) {
-//         cluster.fork()
-//       }
-//       cluster.on('exit', worker => {
-//         logger.info('Worker: %s, died: %s', worker.process.pid, new Date().toLocaleString())
-//         cluster.fork()
-//       })
-//     }
-//     /* --------------------------------------------------------------------------- */
-//     /* WORKERS */
-//     else {
-//       app.listen(PORT, err => {
-//         if (!err){
-//           logger.info('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
-//           if (inspect(process.argv[2]))
-//             FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
-//           if (inspect(process.argv[3]))
-//             FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
-//         }
-//       })
-//     }
 
-//   break;
+//functions
+let createHash = (password)=> {
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
 
-//   default: //FORK
-//     //Server connection start
-//     logger.info('MODO FORK');
-//     app.listen(PORT, err => {
-//       if (!err){
-//         console.log('Servidor express escuchando en el puerto: %s, PID WORKER: %s', PORT, process.pid)
-//         if (inspect(process.argv[2]))
-//           FACEBOOK_CLIENT_ID = inspect(process.argv[2]);
-//         if (inspect(process.argv[3]))
-//           FACEBOOK_CLIENT_SECRET = inspect(process.argv[3]);
-//       }
-//     })
-//   break;
-// }
+let isValidPassword = (user, password)=>{
+  return bCrypt.compareSync(password, user.password);
+}

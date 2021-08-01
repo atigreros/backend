@@ -3,6 +3,11 @@ import mongoose from 'mongoose'
 let UsersSquema = new mongoose.Schema({
         username: {type: String, require:true, max: 60},
         password: {type: String, require:true, max: 60},
+        email: {type: String, require:true, max: 60},
+        age: {type: Number, require:false, max: 100},
+        address: {type: String, require:false, max: 60},
+        phone: {type: String, require:false, max: 60},
+        avatar: {type: String, require:false, max: 60},
 });
 
 const usersDAO = mongoose.model('users', UsersSquema);
@@ -37,6 +42,11 @@ export default class UsersDB{
           const newUsers = {
             username: data.username,
             password: data.password,
+            email: data.email,
+            age: data.age,
+            address: data.address,
+            phone: data.phone,
+            avatar: data.avatar,
           };
 
           let usersSaveModel = await new usersDAO(newUsers);
