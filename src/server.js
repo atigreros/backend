@@ -5,7 +5,7 @@ import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 import {logger as logger} from './logger.js'
 import {mailethereal as sendMail} from './sendmail.js' //mailing
-import {twilioClient as twilioClient} from './sendsms.js' //messaging
+import {twilioClient as twilioClient} from './sendsms.js' //messaging and whatsapp
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -39,19 +39,23 @@ import compression  from  'compression'
 
 //**************VARIABLES*****************
 let productsDB;
-let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
-let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+let messageDB = new MessageMongoDB(configmongodbRemote.connectionString, configmongodbRemote.connectionLabel);
+//let UserDB = messageDB;
+let UserDB = new UserMongoDB(configmongodbRemote.connectionString, configmongodbRemote.connectionLabel);
+//let messageDB = new MessageMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
+//let UserDB = new UserMongoDB(configmongodbLocal.connectionString, configmongodbLocal.connectionLabel);
 
 
 //**************CONSTANTS*****************
 //const PORT = 8081;
 const PORT = parseInt(process.argv[2]) || 8080;
+const persistence = 6;
+const phoneValue = "+"
 const app = express();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 const messages = []
 const advacedOptions = {userNewUrlParser: true, useUnifiedTopology: true}
-const persistence = 5;
 //const FacebookStrategy = facebookStrategy.Strategy;
 const numCPUs = CPUs.cpus().length;
 //DATABASE
@@ -266,7 +270,7 @@ app.get('/logout', async (req, res) => {
   let lastUser = req.user;
 
   //BEGIN: EMAILING AND MESSAGING
-  if (req.user.email){
+  if (lastUser.email){
     const cuentaDePrueba = lastUser.email
     const asunto = 'Logout'
     const mensajeHtml = `Usuario que sale: ${lastUser.username}, Fecha: ${new Date().toLocaleDateString()} y Hora: ${new Date().toLocaleTimeString()}`
@@ -291,12 +295,9 @@ io.on('connection', socket => {
   console.log('New user connected!')
   socket.emit('messages', messages)
 
-
   //When click insert from user
   socket.on('boton', async function(newProduct) { 
     console.log('Click del usuario');
-    //const prod = products.add(newProduct);
-    //console.log(newProduct);
 
     await productsDB.add(newProduct); 
     let valid =  await productsDB.read();
@@ -305,22 +306,54 @@ io.on('connection', socket => {
     io.sockets.emit('productsToClient', newProduct);
   })
 
+  //When User confirm an Order, send email to administrator 
+  socket.on('order', async function(newOrder) { 
+    console.log('Orden del usuario');
+    console.log(newOrder.order);
+
+    //BEGIN: emailing, messagin, whatsapp
+    if (newOrder){
+      const cuentaDePrueba = newOrder.useremail
+      const asunto = 'Nuevo pedido de: ' + newOrder.username + ' email: ' + newOrder.useremail
+      let body = '';
+      newOrder.order.forEach(element=>{
+          body = body + `${element.quantity} unidades de ${element.title} \n`
+      })
+
+      const info = await sendMail({
+        to: cuentaDePrueba,
+        subject: asunto,
+        html: body
+      })
+
+      //sending wapp
+      twilioClient.messages.create({ 
+          from: 'whatsapp:+14155238886',
+          body: asunto,
+          to: 'whatsapp:' + phoneValue })
+      .then(messages => console.log(messages.sid))
+      .catch(messages => console.log(messages))
+    }
+    //END: emailing, messaging, whatsapp
+  })
+
+
   //When chat send message
   socket.on('messages', async function(data) { 
     messages.push(data);
 
+    //BEGIN SEND SMS
     const from = '+13236415819'
-    const to = '+573012235214'
+    const to = phoneValue
     let body = '';
-
     if (data.text.includes('administrador')){
       body = `Mensaje:  ${data.text},  enviado por: ${data.name}`
       const info = await twilioClient.messages.create({ body, from, to })
       console.log(info);}
-      //console.log(body)}
     else
-      console.log('envio otra vaina: ' + data.text);
-   
+      console.log('sin palabra administrador no envía sms');
+    //END SMS
+
     logger.info('Getting message from socket %s',data)
     await messageDB.add(data); 
     let valid =  await messageDB.read();
@@ -328,17 +361,12 @@ io.on('connection', socket => {
  
     io.sockets.emit('messages', messages)
   })
-
 })
-
-
 
 //Process
 process.on('exit', (code)=>{
   logger.warn('About to exit with code: %s', code);
 })
-
-
 
 
 //Server connection start

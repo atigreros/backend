@@ -8,12 +8,22 @@ execute:
 
 3. Set sendsms.js file with  acctSid and authToken
 
-4. npm start
+4. Set phoneValue on server.js
 
-5. login with facebook
+5. npm start
 
-6. Check ethereal mail
+6. register a user
 
-7. Send message with "administrador" text
+7. Login as user created on 5
 
-8. Check cellphone sms
+8. Check ethereal mail
+
+9. Select quantities of products
+
+10. Click on "HACER EL PEDIDO"
+
+11. Check ethereal mail and whatsapp
+
+12. Log out
+
+13. Check ethereal mail

@@ -4,21 +4,56 @@ const socket = io.connect();
 //Adding product
 ////////////////////////////////////////
 //Send client product to server
-document.getElementById('miBoton').addEventListener('click', () => {
-  let newProduct =
-  {
-      title : document.getElementById('title').value,
-      price : document.getElementById('price').value,
-      thumbnail : document.getElementById('thumbnail').value
-  }
-  socket.emit('boton', newProduct)
-})
+// document.getElementById('miBoton').addEventListener('click', () => {
+//   let newProduct =
+//   {
+//       title : document.getElementById('title').value,
+//       price : document.getElementById('price').value,
+//       thumbnail : document.getElementById('thumbnail').value
+//   }
+//   socket.emit('boton', newProduct)
+// })
 
 //Add product to table when server reply
 socket.on('productsToClient', async (data) => {
   console.log('Esto se ve en el cliente: Productos en el cliente');
   console.log(data);
   addRow('ProductTable', data);
+})
+
+////////////////////////////////////////
+//Pedir un producto
+////////////////////////////////////////
+//Send client product to server
+document.getElementById('btnOrder').addEventListener('click', () => {
+
+  console.log("click en order")
+  let newOrder = $('#ProductTable tr:has(td)').map(function(i, v) {
+    var $td =  $('td', this);
+        return {
+                 //id: $td.eq(0).text(),
+                 title: $td.eq(1).text(),
+                 price: $td.eq(2).text(),
+                 quantity: $td.eq(4).children('#quantity').val()         
+               }
+  }).get();
+ 
+  let newOrderWithFilter= newOrder.filter(function(product) {
+    return product.quantity > 0 && 
+        product.price > 0
+  });
+
+  let fullOrder ={
+    order: newOrderWithFilter,
+    username: document.getElementById('username').value,
+    useremail: document.getElementById('useremail').value
+  } 
+ 
+  console.log("New order");
+  console.log(fullOrder);
+  socket.emit('order', fullOrder);
+  alert("Su pedido fue enviado \n" +
+        "¡Gracias!");
 })
 
 ////////////////////////////////////////
