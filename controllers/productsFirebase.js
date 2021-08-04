@@ -1,6 +1,6 @@
 //import { query } from 'express';
 import firebase from 'firebase-admin';
-import {firebaseAccount as serviceAccount} from './config.js'
+import {firebaseAccount as serviceAccount} from '../Persistence/products.js'
 
 async function CRUD()
 {

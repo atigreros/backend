@@ -5,7 +5,7 @@ import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 import {logger as logger} from './logger.js'
 import {mailethereal as sendMail} from './sendmail.js' //mailing
-import {twilioClient as twilioClient} from './sendsms.js' //messaging and whatsapp
+//import {twilioClient as twilioClient} from './sendsms.js' //messaging and whatsapp
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -15,7 +15,7 @@ import {
   mongodbLocal as configmongodbLocal,
   mysql as configMysql,
   maxQuantityRandom as maxQtyRandom
-} from '../controllers/config.js'
+} from '../Persistence/products.js'
 import UserMongoDB from '../controllers/usersMongoDb.js'
 import ProductsFirebase from '../controllers/productsFirebase.js'
 import session from 'express-session'
@@ -326,13 +326,14 @@ io.on('connection', socket => {
         html: body
       })
 
-      //sending wapp
+      /*/sending wapp
       twilioClient.messages.create({ 
           from: 'whatsapp:+14155238886',
           body: asunto,
           to: 'whatsapp:' + phoneValue })
       .then(messages => console.log(messages.sid))
       .catch(messages => console.log(messages))
+      */
     }
     //END: emailing, messaging, whatsapp
   })
@@ -342,7 +343,7 @@ io.on('connection', socket => {
   socket.on('messages', async function(data) { 
     messages.push(data);
 
-    //BEGIN SEND SMS
+    /*BEGIN SEND SMS
     const from = '+13236415819'
     const to = phoneValue
     let body = '';
@@ -352,7 +353,7 @@ io.on('connection', socket => {
       console.log(info);}
     else
       console.log('sin palabra administrador no envía sms');
-    //END SMS
+    //END SMS*/
 
     logger.info('Getting message from socket %s',data)
     await messageDB.add(data); 

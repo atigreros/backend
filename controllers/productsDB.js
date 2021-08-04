@@ -1,4 +1,4 @@
-import { mysql } from './config.js'
+import { mysql } from '../Persistence/products.js'
 //import { sqlite3 } from './config.js'
 import knexLib from 'knex'
 
