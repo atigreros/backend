@@ -4,21 +4,12 @@ backend class
 execute:
 1. npm i
 
-2. ejecutar npm start
+# Para probar Axios
+1. ejecutar npm start
 
-# desde el raiz (localhost:8080), ingresar productos, listar productos
+2. En otro terminal ir a la carpeta javascript y ejecutar node clienteHttpAxios.js
+ver el resultado arrojado por cada variable solicitada
 
+# Para probar Mocha chai
+1. ejecutar npm mocha
 
-# Pruebas desde GraphQL (localhost:8080/graphql)
-
-1. Consultar mensajes
-```
-{
-  message
-}
-```
-1. Consultar productos
-```
-{
-  products
-}
