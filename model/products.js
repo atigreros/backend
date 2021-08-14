@@ -1,7 +1,7 @@
 //import mongoose from 'mongoose'
 const mongoose = require('mongoose')
 
-let productSquema = new mongoose.Schema({
+let productSchema = new mongoose.Schema({
     title: {type: String, require:true, max: 60},
     price: {type: Number, require:true},
     thumbnail: {type: String, require:true, max: 200}

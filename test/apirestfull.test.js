@@ -13,7 +13,7 @@ console.log(product)
 describe('test api rest full', () => {
 
     before(async () => {
-        await mongoose.connect('mongodb://localhost/mibase', {
+        await mongoose.connect('mongodb://localhost/ecommerce', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })

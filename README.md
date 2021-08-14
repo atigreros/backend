@@ -11,5 +11,6 @@ execute:
 ver el resultado arrojado por cada variable solicitada
 
 # Para probar Mocha chai
-1. ejecutar npm mocha
+1. ejecutar nodemon ./server.js
+2. Postman test
 
