@@ -4,7 +4,8 @@ backend class
 execute:
 1. npm i
 
-2. npm start [Port] [Persistence]
+2. npm start [Persistence]
+
 Persistence could be: Mem, File or Mongo
 
 3. Test
