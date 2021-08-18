@@ -44,6 +44,20 @@ export default class persistenceMongo {
             console.log(error)
         }
     }
+    getById = async (id) =>{
+        let searched
+        try {
+            searched = await products.findOne({ _id: id }, this.projection ).lean()
+        } catch (err) {
+            throw new CustomError(500, 'error al buscar producto por id', err)
+        }
+
+        if (!searched) {
+            throw new CustomError(404, 'producto no encontrado con ese ID', { id: id })
+        }
+
+        return searched
+    }
 }
 
 
