@@ -1,8 +1,10 @@
 import express from 'express'
 import handlebars from 'express-handlebars'
+import argv from 'yargs'
 
 import * as controller from './controller/products.js'
 
+const port = argv(process.argv.slice(2)).argv.port;
 const app = express()
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -32,8 +34,7 @@ app.get('/data-json', controller.dataJSON)
 /* -------------------------------------- */
 app.get('/datos', controller.getHour)
 
-
-const PORT = 8080
+const PORT = port || 8080 //yargs
 const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${server.address().port}`)
 })
