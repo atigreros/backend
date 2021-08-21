@@ -1,4 +1,4 @@
-import ProductsDaoDB from './dao/productsDaoDB.js'
+import ProductsDaoDB from './dao/productsDAODB.js'
 import DTO from './dto/products.js'
 
 class ProductsApi {
