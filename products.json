@@ -1,0 +1,18 @@
+[
+	{
+		"title": "sombrero voltiao",
+		"price": 79.99,
+		"stock": 2,
+		"thumbnail": "https://images-na.ssl-images-amazon.com/images/I/91XPsfS64ML._AC_SL1500_.jpg",
+		"_id": 1,
+		"fyh": "19/8/2021 15:21:43"
+	},
+	{
+		"title": "mochila wayuu",
+		"price": 46.19,
+		"stock": 5,
+		"thumbnail": "https://www.wayuubags.co/images/Mochilas%20Wayuu%20Bolsos%2019.jpg",
+		"_id": 2,
+		"fyh": "19/8/2021 15:22:23"
+	}
+]
