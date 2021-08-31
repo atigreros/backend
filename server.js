@@ -24,6 +24,6 @@ const PORT = config.PORT || 8000
 const server = app.listen(PORT, 
     () => console.log(
         `Express GRAPHQL server listening port: ${PORT}
-        \rConfig: [Modo: ${config.NODE_ENV}, Persistencia: - ${config.PERSISTENCE}, GRAPHiQL: ${config.GRAPHIQL=='true'?'Si':'No'}]`
+        \rConfig: [Modo: ${config.NODE_ENV}, Persistence: - ${config.PERSISTENCE}, GRAPHiQL: ${config.GRAPHIQL=='true'?'Yes':'Not'}]`
 ))
 server.on('error', error => console.log('Express server error:', error) )

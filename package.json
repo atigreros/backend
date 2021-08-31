@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js --ignore products.json",
-    "dev": "set NODE_ENV=development&& node server.js",
+    "dev": "set NODE_ENV=development&& node server.js --ignore products.json",
     "prod": "set NODE_ENV=production&& node server.js"
   },
   "keywords": [],

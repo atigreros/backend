@@ -11,5 +11,6 @@ export default {
   HOST: process.env.HOST || 'localhost',
   PORT: process.env.PORT || 8080,
   //MEM - FILE - MONGO
-  PERSISTENCE: process.env.PERSISTENCE || 'MEM'
+  PERSISTENCE: process.env.PERSISTENCE || 'MEM',
+  GRAPHIQL: process.env.GRAPHIQL || 'true'
 }

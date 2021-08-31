@@ -20,8 +20,8 @@ class RouterProducts {
             type Mutation {
                 addProduct(
                     title: String!,
-                    price: Number!,
-                    stock: Number!,
+                    price: Float!,
+                    stock: Int!,
                     thumbnail: String!,
                 ): Product,
                 updateProduct(
@@ -35,8 +35,8 @@ class RouterProducts {
             type Product {
                 _id: String,
                 title: String
-                price: Number
-                stock: Number
+                price: Float
+                stock: Int
                 thumbnail: String
             }    
         `);
