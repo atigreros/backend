@@ -23,6 +23,7 @@ app.use('/products', routerProducts.start())
 const PORT = config.PORT || 8000
 const server = app.listen(PORT, 
     () => console.log(
-        `Express server listening port: ${PORT} (${config.NODE_ENV} - ${config.PERSISTENCE})`
+        `Express GRAPHQL server listening port: ${PORT}
+        \rConfig: [Modo: ${config.NODE_ENV}, Persistencia: - ${config.PERSISTENCE}, GRAPHiQL: ${config.GRAPHIQL=='true'?'Si':'No'}]`
 ))
 server.on('error', error => console.log('Express server error:', error) )
