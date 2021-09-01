@@ -33,7 +33,8 @@ class Products {
         const ProductSchema = Joi.object({
             title: required? Joi.string().required() : Joi.string(),
             price: required? Joi.number().required() : Joi.number(),
-            stock: required? Joi.number().integer().required() : Joi.number().integer(),
+            stock: required? Joi.number().required() : Joi.number().integer(),
+            //stock: required? Joi.number().integer().required() : Joi.number().integer(),
             thumbnail: required? Joi.string().required() : Joi.string(),
         })
 

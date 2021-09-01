@@ -45,7 +45,7 @@ class RouterProducts {
         const root = {
             products : _id => this.controllerProducts.getProducts(_id),
             addProduct : product =>this.controllerProducts.addProduct(product),
-            actualizarNoticia: (_id,products) => this.controllerProducts.updateProduct(_id,products),
+            updateProduct: (_id,products) => this.controllerProducts.updateProduct(_id,products),
             deleteProduct : _id => this.controllerProducts.deleteProduct(_id)
         };
 

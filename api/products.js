@@ -5,7 +5,7 @@ import Products from '../model/models/products.js';
 class ApiProducts {
 
     constructor() {
-        this.productsDAO = ProductsFactoryDAO.get(config.TIPO_PERSISTENCIA)
+        this.productsDAO = ProductsFactoryDAO.get(config.PERSISTENCE)
     }
 
     async getProducts(id) { return await this.productsDAO.getProducts(id) }
@@ -15,7 +15,7 @@ class ApiProducts {
         return await this.productsDAO.addProduct(product) 
     }
 
-    async updateProducts(id,product) { 
+    async updateProduct(id,product) { 
         ApiProducts.validProduct(product,false)
         return await this.productsDAO.updateProduct(id,product) 
     }
