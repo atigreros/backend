@@ -1,0 +1,5 @@
+<ul>
+    @each(product in products)
+        <li>Nombre: {{ product.title }} | Precio : {{ product.price }} | Stock : {{ product.stock }} | Foto : {{ product.thumbnail }}</li>
+    @endeach
+</ul>
