@@ -1,17 +1,29 @@
-import { Client } from "../../deps.ts";
+import { Client, config } from "../../deps.ts";
 import type { Product } from "../types/product.ts";
+import { ProductsDB } from './productsInterface.ts';
 
-const client= await new Client();
+const client = new Client();
+const { STRMySQL } = config();
+const strCon = STRMySQL.split(",");
 
 try {
   console.log("Trying MySQL connection");
+
   client.connect({
+    hostname: strCon[0],//"127.0.0.1",
+    username: strCon[1],//"root",
+    db: strCon[2],//"prueba",
+    poolSize: Number(strCon[3]),//3, // connection limit
+    password: strCon[4],//"aleja78*",
+  });
+
+  /*client.connect({
     hostname: "127.0.0.1",
     username: "root",
     db: "prueba",
     poolSize: 3, // connection limit
     password: "aleja78*",
-  });
+  });*/
 
   console.log("MySQL database connected");
 } catch (err) {
@@ -19,7 +31,7 @@ try {
 }
 
 //Fake Db Queries
-class Products {
+class Products implements ProductsDB {
 
   constructor() { 
   }
@@ -53,13 +65,13 @@ class Products {
       return products
   };
 
-  updateProduct = (
+  updateProduct = async (
     productId : string,
     title: string,
     price: number,
     stock: number,
     thumbnail: string,
-  ): Product => {
+  ): Promise<Product> => {
       let productUpdate:Product = {
         title,
         price,
@@ -81,4 +93,4 @@ class Products {
 
 };
 
-export const ProductsController = new Products();
+export const ProductsMap = new Products();

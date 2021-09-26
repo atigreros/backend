@@ -1,9 +1,12 @@
+import { config } from "../../deps.ts";
 import { MongoClient } from "../../deps";
 import type { User } from "../types/user";
 
-const URI = "mongodb://127.0.0.1:27017";
-        //const URL = 'mongodb://localhost/ecommerce';
-        //const URL = 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority';    
+const { STRCONNECT } = config();
+const { DB } = config();
+const { TABLE } = config();
+const URI =STRCONNECT;//"mongodb://127.0.0.1:27017";
+//const URL = 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority';    
 
 // Mongo Connection Init
 const client = new MongoClient();
@@ -14,7 +17,7 @@ try {
     console.log(err);
 }
 
-const db = client.database("ecommerce");
+const db = client.database(DB);
 const users = db.collection<User>("users");
 
 // @description: GET all Users

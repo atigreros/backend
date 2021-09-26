@@ -1,37 +1,37 @@
-import { product } from './product';
+import { ProductsDB } from "./productsInterface.ts"
+import { ProductsMap as productsMemory } from './product.ts';
 //import { productsFS } from './productsFS';
-import { productsMySQL } from './productsMySQL';
+import { ProductsMap as productsMySQL } from './productsMySQL.ts';
 //import { productsSQLite3 } from './productsSQLite3';
-import { productsMongo } from './productsMongoDB';
+import { ProductsMap as productsMongo } from './productsMongoDB.ts';
 
-export enum Persistence {
-    Memory = 'MEM',
-    Mongo =  'MONGODB',
-    //FileSystem = 'FS',
-    MySQL = 'MySQL',
-    //SQLITE3 = 'SQLITE3',    
-}
 
-export class productsFactory {
-    //Static nos permite usar el metodo sin crear una instancia
-    static get(type: Persistence) {
-        switch(type){
- /*           case Persistence.FileSystem:
-                return new productsFS();
-*/
-            case Persistence.MySQL:
-                return new productsMySQL();
-            
-/*            case Persistence.SQLITE3:
-                const instanceSQLite3 = new productsSQLite3();
-                instanceSQLite3.initDB();
-                return instanceSQLite3;
-*/
-            case Persistence.Mongo:
-                return new productsMongo();
+export class ProductsFactory {
+    constructor() { 
+    }
 
-           default: 
-                return new product();
-        }
+    getFactory(persistence: string): ProductsDB {
+        console.log(persistence);
+        switch(persistence){
+            /*           case Persistence.FileSystem:
+                            return new productsFS();
+            */
+                        case 'MySQL':
+                            return productsMySQL;
+                        
+            /*            case Persistence.SQLITE3:
+                            const instanceSQLite3 = new productsSQLite3();
+                            instanceSQLite3.initDB();
+                            return instanceSQLite3;
+            */
+                        case 'MONGO':
+                            return productsMongo;
+        
+                        default: 
+                            return productsMemory;
+                    }
+        //return productsMongo;
+        //return productsMySQL;
+        //return productsMemory
     }
 }

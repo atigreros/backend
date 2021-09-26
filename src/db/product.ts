@@ -1,4 +1,5 @@
 import type { Product } from "../types/product.ts";
+import { ProductsDB } from "./productsInterface.ts"
 
 const products:Product[] = [{   
   "_id": "1",
@@ -38,7 +39,7 @@ const products:Product[] = [{
 ]
 
 //Fake Db Queries
-class Products {
+class Products implements ProductsDB{
   constructor() {
   }
 
@@ -47,7 +48,7 @@ class Products {
     return product || {}
   }
 
-  findProducts (){
+  findProducts = async () =>{
     return products
   }
 
@@ -102,4 +103,4 @@ class Products {
   };
 }
 
-export const ProductsController = new Products();
+export const ProductsMap = new Products();
