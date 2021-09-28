@@ -1,0 +1,56 @@
+<%- include('./layout') -%>
+<body>
+<h3>Process</h3>
+  <table class="table table-primary">
+    <tbody>
+        <tr>
+          <td>Argumentos de entrada</td>
+          <td>
+            PORT: <%= argv2%>  </b>
+            FORK OR CLUSTER: <%= argv3%>  </b>
+            <%= argv4%>  </b>
+            <%= argv5%>  </b>
+            <%= argv6%>  </b>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Nombre de la plataforma</td>
+          <td><%= platfName%></td>
+        </tr>
+
+        <tr>
+          <td>Version de node.js</td>
+          <td><%= verNode%></td>
+        </tr>
+
+        <tr>
+          <td>Uso de memoria</td>
+          <td><%= memUse%></td>
+        </tr>
+
+        <tr>
+          <td>Path de ejecución</td>
+          <td><%= pathExec%></td>
+        </tr>
+        
+        <tr>
+          <td>Process Id</td>
+          <td><%= procId%></td>
+        </tr>
+
+        <tr>
+          <td>Carpeta corriente</td>
+          <td><%= currentDir%></td>
+        </tr>
+
+        <tr>
+          <td>Numero de Procesadores</td>
+          <td><%= numProcess%></td>
+        </tr>
+
+    </tbody>
+  </table>
+
+</body>
+</html>

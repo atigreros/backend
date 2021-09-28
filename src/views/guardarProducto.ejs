@@ -1,0 +1,132 @@
+<%- include('./layout') -%>
+<body>
+
+  <form action="/logout" method="get">
+    <div class="form-group row">
+      <div class="col-sm-9">
+        <h3>Bienvenido <%= user.username %> </h3>
+      </div>
+        <div class="col-sm-3">
+          <button class="btn btn-primary mb-4">Logout</button>
+        </div>
+    </div>
+
+    <br>
+    <h4>Visitas: <%=contador%> </h4>
+  </form>
+  
+    <h3>Ingrese producto</h3>
+    <!-- <form action="/guardarSocket"> -->
+      <div class="form-group row">
+          <label for="title" class="col-sm-1 col-form-label">Nombre</label>
+          <div class="col-sm-2">
+              <input class="form-control form-control-sm" rows="3" type="text" id="title" name="title" /></p>
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="price" class="col-sm-1 col-form-label">Precio</label>
+          <div class="col-sm-2">
+              <input class="form-control form-control-sm " rows="3" type="text" id="price" name="price" /></p>
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="thumbnail" class="col-sm-1 col-form-label">Foto</label>
+          <div class="col-sm-2">
+              <input class="form-control form-control-sm" rows="3" type="text" id="thumbnail" name="thumbnail" /></p>
+          </div>
+      </div>
+    </div>
+      <button class="btn btn-primary mb-4" id="miBoton">ADICIONAR</button>
+    <!-- </form> -->
+
+    <h3>Lista de productos</h3>
+    <% if (products) { %>
+      <table class="table table-primary" Id='ProductTable'>
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Price</th>
+              <th scope="col">Thumbnail</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach(product=> { %>
+              <tr>
+                <td><a href="/listar/<%= product.id%>" class="text-white"><%= product.id%></a></td>
+                <td><a href="/listar/<%= product.id%>" class="text-white"><%= product.title%></a></td>
+                <td><%= product.price%></td>
+                <td><img src="<%= product.thumbnail%>"></td>
+                <td><input class="form-control form-control-sm" rows="1" type="number" id="quantity" name="quantity" min="0" max="9" value="0"/></td>
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+        <button class="btn btn-primary mb-4" id="btnOrder">HACER EL PEDIDO</button>
+      <% } else { %>
+        <div class="alert alert-primary" role="alert">
+          No hay productos disponibles
+        </div>
+      <% } %>
+
+
+      <h3>Centro de Mensajes</h3>
+      <hr>
+  
+      <form onsubmit="return addMessage(this)" autocomplete="off">
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="email" id="email" class="form-control form-control-sm" placeholder="email@server.com">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" id="name" class="form-control form-control-sm" placeholder="nombre">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" id="lastName" class="form-control form-control-sm" placeholder="apellido">
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="number" id="age" class="form-control form-control-sm" placeholder="edad">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" id="nickName" class="form-control form-control-sm" placeholder="alias">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+            <input type="text" id="avatar" class="form-control form-control-sm" placeholder="url avatar">
+          </div>
+        </div> 
+
+        <div id="messages"></div>
+
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <input type="text" id="texto" class="form-control form-control-sm" placeholder="Ingresá un mensaje...">
+          </div>
+          <div class="col-sm-2">
+            <input class="btn btn-primary my-2" type="submit" value="ENVIAR">
+          </div>
+        </div>
+      </form>
+
+</body>
+
+    <script src="js/main.js"></script>
+
+</html>
+

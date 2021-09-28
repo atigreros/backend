@@ -1,0 +1,30 @@
+<%- include('./layout') -%>
+<body>
+<h3>Random</h3>
+  <table class="table table-primary">
+    <tbody>
+      <% if (quantity) { %>
+        <tr>
+          <td>Argumentos de entrada</td>
+          <td><%= quantity%></td>
+        </tr>
+      <% } %>
+
+        <% if (numbers) { %>
+          <tr>
+            <td>Número</td>
+            <td>Repeticiones</td>
+          </tr>
+          <% numbers.forEach(myNumber=> { %>
+            <tr>
+              <td><%= myNumber.number%></td>
+              <td><%= myNumber.cant%></td>
+            </tr>
+          <% }); %>
+        <% } %>
+
+    </tbody>
+  </table>
+
+</body>
+</html>
