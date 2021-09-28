@@ -1,9 +1,12 @@
-import { MongoClient } from "../../deps";
-import type { Message } from "../types/message";
+import { config } from "../../deps.ts";
+import { MongoClient } from "../../deps.ts";
+import type { Message } from "../types/message.ts";
 
-const URI = "mongodb://127.0.0.1:27017";
-        //const URL = 'mongodb://localhost/ecommerce';
-        //const URL = 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority';    
+//Load enviroment variables 
+const { args } = Deno;
+const { STRMONGO } = config({path: args[0],  export: true });
+const { DBMONGO } = config({path: args[0],  export: true });
+const URI = STRMONGO;
 
 // Mongo Connection Init
 const client = new MongoClient();
@@ -14,7 +17,7 @@ try {
     console.log(err);
 }
 
-const db = client.database("ecommerce");
+const db = client.database(DBMONGO);
 const messages = db.collection<Message>("messages");
 
 // @description: GET all Messages

@@ -2,13 +2,13 @@ import { Context, helpers, config } from "../../deps.ts";
 import type { Product } from "../types/product.ts";
 import {ProductsFactory} from "../db/productsFactory.ts";
 
-//import {ProductsController} from "../db/product.ts";
-//import {ProductsController} from "../db/productsMongoDB.ts";
-//import {ProductsController as ProductsFactory} from "../db/productsMySQL.ts";
+//Load enviroment variables 
+const { args } = Deno;
+const { PERSISTENCE } = config({path: args[0]});
 
-const { PERSISTENCE } = config();
 const pf = new ProductsFactory();
 const Products = pf.getFactory(PERSISTENCE);
+console.log('PERSISTENCIA =',PERSISTENCE)
 
 
 export const findProduct = async (ctx: Context) => {

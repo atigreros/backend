@@ -1,3 +1,4 @@
 deno install -qAf --unstable https://deno.land/x/denon/denon.ts
 
-denon start
+1. denon start production.env
+2. denon start development.env

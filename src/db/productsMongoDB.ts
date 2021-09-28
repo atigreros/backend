@@ -3,10 +3,13 @@ import { MongoClient } from "../../deps.ts";
 import type { Product } from "../types/product.ts";
 import { ProductsDB } from "./productsInterface.ts"
 
-const { STRMONGO } = config();
-const { DB } = config();
-const { TABLE } = config();
-const URI =STRMONGO;
+
+//Load enviroment variables 
+const { args } = Deno;
+const { STRMONGO } = config({path: args[0],  export: true });
+const { DBMONGO } = config({path: args[0],  export: true });
+const { TABLEMONGO } = config({path: args[0],  export: true });
+const URI = STRMONGO;
 
 //const URI = "mongodb://127.0.0.1:27017";
 //const URI = 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority';    
@@ -17,16 +20,14 @@ try {
     console.log("Connecting to Mongo...");
     await client.connect(URI);
     console.log("Mongo Connected");
-    console.log(DB);
-    console.log(TABLE);
+    console.log(DBMONGO);
+    console.log(TABLEMONGO);
 } catch (err) {
     console.log(err);
 }
 
-//const db = client.database(`"${DB}"`);
-//const products = db.collection<Product>(`"${TABLE}"`);
-const db = client.database(DB);
-const products = db.collection<Product>(TABLE);           
+const db = client.database(DBMONGO);
+const products = db.collection<Product>(TABLEMONGO);           
 
 //Fake Db Queries
 class Products implements ProductsDB{

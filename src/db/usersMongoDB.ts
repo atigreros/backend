@@ -1,12 +1,12 @@
-import { config } from "../../deps.ts";
-import { MongoClient } from "../../deps";
-import type { User } from "../types/user";
+import { MongoClient, config } from "../../deps.ts";
+import type { User } from "../types/user.ts";
 
-const { STRCONNECT } = config();
-const { DB } = config();
-const { TABLE } = config();
-const URI =STRCONNECT;//"mongodb://127.0.0.1:27017";
-//const URL = 'mongodb+srv://ecommercedbUser:dbpass2021**@cluster0.ixflv.mongodb.net/ecommerce?retryWrites=true&w=majority';    
+//Load enviroment variables 
+const { args } = Deno;
+const { STRMONGO } = config({path: args[0],  export: true });
+const { DBMONGO } = config({path: args[0],  export: true });
+const URI = STRMONGO;
+
 
 // Mongo Connection Init
 const client = new MongoClient();
@@ -17,7 +17,7 @@ try {
     console.log(err);
 }
 
-const db = client.database(DB);
+const db = client.database(DBMONGO);
 const users = db.collection<User>("users");
 
 // @description: GET all Users
