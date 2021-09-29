@@ -6,10 +6,11 @@ import {
     config,
     viewEngine,
     ViewConfig,
-    Session } from "../deps.ts";
+    Session } from "./deps.ts";
 
-import { router } from './routes/index.ts'
-
+//import { router } from './routes/index.ts'
+import { apiRouter } from './src/routes/api.ts'
+import { mainRouter } from './src/routes/main.ts'
 
 //Application
 const app = new Application();
@@ -22,9 +23,9 @@ await session.init();
 const ejsEngine = engineFactory.getEjsEngine();
 const oakAdapter = adapterFactory.getOakAdapter();
 const viewConfig: ViewConfig = {
-    viewRoot: "../views",
+    viewRoot: "./src/views",
     viewExt: ".ejs"
-  }
+}
 
 // session middleware
 app.use(session.use()(session));
@@ -40,27 +41,17 @@ app.use(viewEngine(oakAdapter, ejsEngine, viewConfig));
     next();
    });*/
 
-
 //Adding middleware to require our router
 const parentRouter = new Router();
 //Producto routes
-parentRouter.all("apiRouter", "/api(/.*)?", router.routes());
+parentRouter.all("apiRouter", "/api(/.*)?", apiRouter.routes());
+parentRouter.all("mainRouter", "/main(/.*)?", mainRouter.routes());
+
 app.use(parentRouter.routes());
 
-/*router.get("/api/products", findProduct)
-.get("/api/products/:productId", findProductById)
-.delete("/api/products/:productId", deleteProduct)
-.put("/api/products/:productId", updateProduct)
-.post("/api/products", createProduct);*/
-
-
-// router.get("/",(ctx)=>{
-//     ctx.render('index.ejs',{data: {msg:"World"}}
-//     });
-
 //Adding middleware to require our router
-app.use(router.routes());
-app.use(router.allowedMethods());
+app.use(parentRouter.routes());
+app.use(parentRouter.allowedMethods());
 
 //ENV variables
 const { args } = Deno;
