@@ -8,6 +8,8 @@ import { ProductsDB } from "./productsInterface.ts"
 const { args } = Deno;
 const { STRMONGO } = config({path: args[0],  export: true });
 const { DBMONGO } = config({path: args[0],  export: true });
+const { USRNAME } = config({path: args[0],  export: true });
+const { PWDMONGO } = config({path: args[0],  export: true });
 const { TABLEMONGO } = config({path: args[0],  export: true });
 const URI = STRMONGO;
 
@@ -18,8 +20,28 @@ const URI = STRMONGO;
 const client = new MongoClient();
 try {
     console.log("Connecting to Mongo...");
-    await client.connect(URI);
-    console.log("Mongo Connected");
+    //await client.connect(URI);
+
+    //Referencia: https://stackoverflow.com/questions/66202683/deno-uncaught-error-no-such-host-is-known-os-error-11001
+    await client.connect({
+      db: DBMONGO,//"ecommerce",
+      tls: true,
+      servers: [
+        { 
+          host: URI,//"cluster0-shard-00-02.ixflv.mongodb.net",
+          port: 27017,
+        },
+      ],
+      credential: {
+        username: USRNAME,//"ecommercedbUser",
+        password: PWDMONGO,//"dbpass2021**",
+        db: DBMONGO,//"ecommerce",
+        mechanism: "SCRAM-SHA-1",
+      },
+    });
+
+
+    console.log("Mongo Connected to");
     console.log(DBMONGO);
     console.log(TABLEMONGO);
 } catch (err) {

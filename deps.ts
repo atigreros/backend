@@ -3,6 +3,9 @@ export { config } from "https://deno.land/x/dotenv@v2.0.0/mod.ts";
 export { MongoClient } from "https://deno.land/x/mongo@v0.22.0/mod.ts";
 export { Client } from "https://deno.land/x/mysql@v2.10.1/mod.ts"; //Mysql
 export { DB, Status } from "https://deno.land/x/sqlite@v3.1.1/mod.ts";
-export { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
+//export { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
+export { Session } from "https://deno.land/x/session@1.1.0/mod.ts"; //1.1.0 para que funcione onyx
 export { viewEngine, engineFactory, adapterFactory} from "https://deno.land/x/view_engine@v1.5.0/mod.ts";
 export type { ViewConfig } from "https://deno.land/x/view_engine@v1.5.0/mod.ts";
+export { default as onyx } from "https://deno.land/x/onyx@v1.0.1/mod.ts";
+export { default as LocalStrategy } from "https://deno.land/x/onyx@v1.0.1/src/strategies/local-strategy/local-strategy.ts";

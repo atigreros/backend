@@ -6,18 +6,29 @@ import {
     config,
     viewEngine,
     ViewConfig,
-    Session } from "./deps.ts";
+    Session,
+    onyx
+ } from "./deps.ts";
+
+// Import in onyx and setup
+import './onyx-setup.ts';
 
 //import { router } from './routes/index.ts'
 import { apiRouter } from './src/routes/api.ts'
 import { mainRouter } from './src/routes/main.ts'
 
 //Application
-const app = new Application();
+const app : Application = new Application();
 
 // Configuring Session for the Oak framework
-const session = new Session({ framework: "oak" });
-await session.init();
+const session = new Session({ 
+    framework: "oak",
+    store: "memory",
+    // store: 'redis',
+    // hostname: '127.0.0.1',
+    // port: 6379, 
+});
+
 
 //VIEWERS WITH EJS
 const ejsEngine = engineFactory.getEjsEngine();
@@ -27,8 +38,12 @@ const viewConfig: ViewConfig = {
     viewExt: ".ejs"
 }
 
+await session.init();
 // session middleware
 app.use(session.use()(session));
+
+// Initialize onyx after session
+app.use(onyx.initialize());  //Si lo inicializo, da error al renderizar login
 
 // view middleware
 app.use(viewEngine(oakAdapter, ejsEngine, viewConfig));
@@ -45,7 +60,7 @@ app.use(viewEngine(oakAdapter, ejsEngine, viewConfig));
 const parentRouter = new Router();
 //Producto routes
 parentRouter.all("apiRouter", "/api(/.*)?", apiRouter.routes());
-parentRouter.all("mainRouter", "/main(/.*)?", mainRouter.routes());
+parentRouter.all("mainRouter", "/(/.*)?", mainRouter.routes());
 
 app.use(parentRouter.routes());
 

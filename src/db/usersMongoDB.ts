@@ -5,13 +5,33 @@ import type { User } from "../types/user.ts";
 const { args } = Deno;
 const { STRMONGO } = config({path: args[0],  export: true });
 const { DBMONGO } = config({path: args[0],  export: true });
+const { USRNAME } = config({path: args[0],  export: true });
+const { PWDMONGO } = config({path: args[0],  export: true });
 const URI = STRMONGO;
 
 
 // Mongo Connection Init
 const client = new MongoClient();
 try {
-    await client.connect(URI);
+    //await client.connect(URI);
+    //Referencia: https://stackoverflow.com/questions/66202683/deno-uncaught-error-no-such-host-is-known-os-error-11001
+    await client.connect({
+        db: DBMONGO,//"ecommerce",
+        tls: true,
+        servers: [
+          { 
+            host: URI,//"cluster0-shard-00-02.ixflv.mongodb.net",
+            port: 27017,
+          },
+        ],
+        credential: {
+          username: USRNAME,//"ecommercedbUser",
+          password: PWDMONGO,//"dbpass2021**",
+          db: DBMONGO,//"ecommerce",
+          mechanism: "SCRAM-SHA-1",
+        },
+      });
+
     console.log("Data Base connected");
 } catch (err) {
     console.log(err);
@@ -124,7 +144,7 @@ const updateUser = async ({
     const inputUser = await body.value;
     await users.updateOne(
         { userID: params.id },
-        { $set: { username: inputUser.username, password: inputUser.password, email: inputUser.email, phone: inputUser.phone, avatar:inputUser.avatar } }
+        { $set: { username: inputUser.username, password: inputUser.password, email: inputUser.email, age:inputUser.age, address: inputUser.address, phone: inputUser.phone, avatar:inputUser.avatar } }
     );
     const updatedUser = await users.findOne({ userID: params.id });
     response.status = 200;
@@ -165,4 +185,4 @@ const deleteUser = async ({
     }
 };
 
-export { getUsers, getUser, addUser, updateUser, deleteUser };
+export { getUsers, getUser, addUser, updateUser, deleteUser, users};
