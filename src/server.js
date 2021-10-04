@@ -5,7 +5,7 @@ import { Server as IOServer } from 'socket.io'
 import Products from '../controllers/products.js'
 import {logger as logger} from './logger.js'
 import {mailethereal as sendMail} from './sendmail.js' //mailing
-import {twilioClient as twilioClient} from './sendsms.js' //messaging and whatsapp
+//import {twilioClient as twilioClient} from './sendsms.js' //messaging and whatsapp
 
 import MessageMongoDB from '../controllers/messagesMongoDb.js'
 import ProductsDB from '../controllers/productsDB.js'
@@ -327,12 +327,12 @@ io.on('connection', socket => {
       })
 
       //sending wapp
-      twilioClient.messages.create({ 
+      /*twilioClient.messages.create({ 
           from: 'whatsapp:+14155238886',
           body: asunto,
           to: 'whatsapp:' + phoneValue })
       .then(messages => console.log(messages.sid))
-      .catch(messages => console.log(messages))
+      .catch(messages => console.log(messages))*/
     }
     //END: emailing, messaging, whatsapp
   })
@@ -343,7 +343,7 @@ io.on('connection', socket => {
     messages.push(data);
 
     //BEGIN SEND SMS
-    const from = '+13236415819'
+    /*const from = '+13236415819'
     const to = phoneValue
     let body = '';
     if (data.text.includes('administrador')){
@@ -351,7 +351,7 @@ io.on('connection', socket => {
       const info = await twilioClient.messages.create({ body, from, to })
       console.log(info);}
     else
-      console.log('sin palabra administrador no envía sms');
+      console.log('sin palabra administrador no envía sms');*/
     //END SMS
 
     logger.info('Getting message from socket %s',data)
